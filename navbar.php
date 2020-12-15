@@ -1,38 +1,63 @@
-<nav class="nav navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-white rounded">
-  <a class="navbar-brand" href="index.php"> <img src="image/thumb.png" style="width: 150px;"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-    <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="shop.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Shop
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="buah.php">Masker</a>
-          <a class="dropdown-item" href="sayur.php">Scrunchies</a>
-        </div>
-      </li>
-<?php if (isset($_SESSION["pelanggan"])) :?>
-		<li class="nav-item navbar-right">
-        <a class="nav-link" href="logout.php">Logout</a>
-      </li>	
-      <li class="nav-item  navbar-right">
-        <a class="nav-link" href="riwayat.php">Riwayat Belanja</a>
-      </li> 
-<?php else: ?>
-      <li class="nav-item  navbar-right">
-        <a class="nav-link" href="login.php">Login</a>
-      </li>
-<?php endif?>
-<li class="nav-item  navbar-right">
-        <a class="nav-link" href="keranjang.php">Keranjang</a>
-      </li>
-      <?php if (isset($_SESSION["pelanggan"])) :?>
-      <a href="data_diri.php"><li class="nav-item  navbar-right nav-link"><?php echo $_SESSION['pelanggan']['nama_pelanggan'] ?></li></a>
-      <?php endif?>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-light">
 
+<a class="navbar-brand" href="#!">
+    <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" height="30" alt="mdb logo">
+  </a>
+
+
+  <!-- Links -->
+  <div class="collapse navbar-collapse justify-content-center" id="basicExampleNav17">
+
+    <!-- Right -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="#!" class="nav-link navbar-link-2 waves-effect">
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#!" class="nav-link waves-effect">
+          Masker
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#!" class="nav-link waves-effect">
+          Scrunchie
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#!" class="nav-link waves-effect">
+          Bundle
+        </a>
+      </li>
+      </ul>
+      </div>
+
+      <!-- Shopping cart icon -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="#!" class="nav-link navbar-link-2 waves-effect">
+          <span class="badge badge-pill red">1</span>
+          <i class="fas fa-shopping-cart pl-0"></i>
+        </a>
+      </li>
     </ul>
-  </div>
-</nav> 
+
+  <ul class="navbar-nav ml-auto nav-flex-icons">
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" href="#!">Sign In</a>
+          <a class="dropdown-item" href="#!">Sign Up</a>
+        </div>
+
+         </ul>
+
+
+
+    
+</nav>
+<!-- Navbar -->
