@@ -13,86 +13,37 @@ include 'koneksi.php';
 <body>
 <?php include "navbar.php";?>
 
-<!--membuat news -->
+<!--membuat Carousel -->
 
     <!-- Section: Block Content -->
-<section>
-
-  <!-- Carousel Wrapper -->
-  <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-example-2" data-slide-to="1"></li>
-      <li data-target="#carousel-example-2" data-slide-to="2"></li>
-    </ol>
-    <!-- Indicators -->
-    <!-- Slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="carousel-item active">
-        <div class="view">
-          <a href="#!">
-            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/ecommerce4.jpg" alt="First slide">
-            <div class="mask rgba-white-slight text-center d-flex align-items-center justify-content-center">
-              <div class="row">
-                <div class="col-12">
-                  <p class="h1-responsive red-text font-weight-bold mb-0">Sale off 30% on every saturday!</p>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <!-- Mask color -->
-        <div class="view">
-          <a>
-            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/ecommerce2.jpg" alt="Second slide">
-            <div class="mask rgba-white-slight text-center d-flex align-items-center justify-content-center">
-              <div class="row">
-                <div class="col-12">
-                  <p class="h1-responsive indigo-text font-weight-bold mb-0">Promotion on each smartphone!</p>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <!-- Mask color -->
-        <div class="view">
-          <a>
-            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Others/ecommerce3.jpg" alt="Third slide">
-            <div class="mask rgba-white-slight text-center d-flex align-items-center justify-content-center">
-              <div class="row">
-                <div class="col-12">
-                  <p class="h1-responsive orange-text font-weight-bold mb-0">Sale off 20% on every headphones!</p>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="carousel/Batik.png" alt="First slide">
     </div>
-    <!-- Slides -->
-    <!-- Controls -->
-    <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-    <!-- Controls -->
+    <div class="carousel-item">
+      <img class="d-block w-100" src="carousel/Christmas.png" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="Carousel/Satin.png" alt="Third slide">
+    </div>
   </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
   <!-- Carousel Wrapper -->
 
 </section>
 <!-- Section: Block Content -->
 
-  <!--end of newspaper -->
-  
+  <!--end of Carousel -->
+
 
   <!--index-->
 
@@ -113,130 +64,75 @@ include 'koneksi.php';
     <!-- Section description -->
     <p class="grey-text w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit fugit, error amet numquam iure provident voluptate esse quasi nostrum quisquam eum porro a pariatur veniam.</p>
 
-    <!-- Grid row -->
-    <div class="row">
+    
+ <div class="row">
+<div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="image/natal/Scrunchie Christmas.png"></div>
+    <figcaption class="info-wrap">
+        <h4 class="title">Christmas Scrunchie</h4>
+        <p class="desc">Desainnya indah, seindah hari natalmu!</p>
+        <div class="rating-wrap">
+          <div class="label-rating">132 reviews</div>
+          <div class="label-rating">154 orders </div>
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+      <a href="" class="btn btn-sm btn-danger active float-right">Add To Chart</a> 
+      <div class="price-wrap h5">
+        <span class="price-new">Rp.12.000</span> <del class="price-old">Rp14.000</del>
+      </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+<div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="image/Klamby/Klamby Lilacc.png"> </div>
+    <figcaption class="info-wrap">
+        <h4 class="title">Purple Satin Klamby</h4>
+        <p class="desc">Warnanya manis, semanis senyum kamu!</p>
+        <div class="rating-wrap">
+          <div class="label-rating">132 reviews</div>
+          <div class="label-rating">154 orders </div>
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+        <a href="" class="btn btn-sm btn-danger active float-right">Add To Chart</a> 
+        <div class="price-wrap h5">
+          <span class="price-new">Rp.12.0000</span>
+        </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+<div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="image/satin/greenmint.png"></div>
+    <figcaption class="info-wrap">
+        <h4 class="title">Green Mint Satin Srunchie</h4>
+        <p class="desc">Lembut kan warnanya?</p>
+        <div class="rating-wrap">
+          <div class="label-rating">132 reviews</div>
+          <div class="label-rating">154 orders </div>
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+        <a href="" class="btn btn-sm btn-danger active float-right">Add To Cart</a> 
+        <div class="price-wrap h5">
+          <span class="price-new">Rp13.000</span>
+        </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+</div> <!-- row.// -->
 
-      <!-- Grid column -->
-      <div class="col-lg-4 col-md-12 mb-4">
-        <!-- Card -->
-        <div class="card card-cascade wider card-ecommerce">
-          <!-- Card image -->
-          <div class="view view-cascade overlay">
-            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img (55).jpg" class="card-img-top"
-              alt="sample photo">
-            <a>
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
-          <!-- Card image -->
-          <!-- Card content -->
-          <div class="card-body card-body-cascade text-center pb-0">
-            <!-- Title -->
-            <h5 class="card-title">
-              <strong>
-                <a href="">GoPro</a>
-              </strong>
-            </h5>
-            <!-- Description -->
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing minima veniam elit.</p>
-            <!-- Card footer -->
-            <div class="card-footer mt-4">
-              <p class="float-left font-weight-bold mb-1 pb-2">1439$</p>
-              <a class="float-right material-tooltip-main" data-toggle="tooltip" data-placement="top" title="Add to Cart">
-                <i class="fas fa-shopping-cart grey-text ml-3"></i>
-              </a>
-              
-            </div>
-          </div>
-          <!-- Card content -->
-        </div>
-        <!-- Card -->
-      </div>
-      <!-- Grid column -->
 
-      <!-- Grid column -->
-      <div class="col-lg-4 col-md-6 mb-4">
-        <!-- Card -->
-        <div class="card card-cascade wider card-ecommerce">
-          <!-- Card image -->
-          <div class="view view-cascade overlay">
-            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(49).jpg" class="card-img-top"
-              alt="sample photo">
-            <a>
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
-          <!-- Card image -->
-          <!-- Card content -->
-          <div class="card-body card-body-cascade text-center pb-0">
-            <!-- Title -->
-            <h5 class="card-title">
-              <strong>
-                <a href="">Camera</a>
-              </strong>
-            </h5>
-            <!-- Description -->
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing minima veniam elit.</p>
-            <!-- Card footer -->
-            <div class="card-footer mt-4">
-              <p class="float-left font-weight-bold mb-1 pb-2">1160$</p>
-              <a class="float-right material-tooltip-main" data-toggle="tooltip" data-placement="top" title="Add to Cart">
-                <i class="fas fa-shopping-cart grey-text ml-3"></i>
-              </a>
-              </a>
-            </div>
-          </div>
-          <!-- Card content -->
-        </div>
-        <!-- Card -->
-      </div>
-      <!-- Grid column -->
 
-      <!-- Grid column -->
-      <div class="col-lg-4 col-md-6 mb-4">
-        <!-- Card -->
-        <div class="card card-cascade wider card-ecommerce">
-          <!-- Card image -->
-          <div class="view view-cascade overlay">
-            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img (56).jpg" class="card-img-top"
-              alt="sample photo">
-            <a>
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
-          <!-- Card image -->
-          <!-- Card content -->
-          <div class="card-body card-body-cascade text-center pb-0">
-            <!-- Title -->
-            <h5 class="card-title">
-              <strong>
-                <a href="">iPhone 6S</a>
-              </strong>
-            </h5>
-            <!-- Description -->
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing minima veniam elit.</p>
-            <!-- Card footer -->
-            <div class="card-footer mt-4">
-              <p class="float-left font-weight-bold mb-1 pb-2">2079$</p>
-              <a class="float-right material-tooltip-main" data-toggle="tooltip" data-placement="top" title="Add to Cart">
-                <i class="fas fa-shopping-cart grey-text ml-3"></i>
-              </a>
-            </div>
-          </div>
-          <!-- Card content -->
-        </div>
-        <!-- Card -->
-      </div>
-      <!-- Grid column -->
-
-    </div>
-    <!-- Grid row -->
-
-  </section>
-  <!--Section: Content-->
+</div> 
+<!--container.//-->
 
 
 </div>
  <?php include "footer.php";?>
 </body>
 </html>
+
