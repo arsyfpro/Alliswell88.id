@@ -1,14 +1,23 @@
+ <!--Main Navigation-->
+    <header>
+
 <!-- Navbar -->
-<nav class="navbar navbar-expand-md navbar-light">
+<nav class="navbar navbar-dark navbar-expand-lg  fixed-top scrolling-navbar">
 
-<a class="navbar-brand" href="#!">
-    <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" height="30" alt="mdb logo">
-  </a>
+<div class="container">
 
+   <!-- Navbar brand -->
+              <ul class="navbar-nav">
+             <li class="nav-item">
+                   <a class="navbar-brand" href="#!">
+            <img src="icon/logoputih.png" height="30">
+              </a>
+            </li>
+          </ul>
 
-  <!-- Links -->
-  <div class="collapse navbar-collapse justify-content-center" id="basicExampleNav17">
-
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse justify-content-center" id="navbar">
+                    
     <!-- Right -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -34,11 +43,12 @@
       </div>
 
       <!-- Shopping cart icon -->
+     <ul class="nav justify-content-end" >
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <a href="#!" class="nav-link navbar-link-2 waves-effect">
-          <span class="badge badge-pill red">1</span>
-          <i class="fas fa-shopping-cart pl-0"></i>
+          <span class="badge badge-pill badge-danger">1</span>
+          <img src="icon/Cart2.png" height="30"> 
         </a>
       </li>
     </ul>
@@ -55,6 +65,12 @@
         </div>
 
          </ul>
+    </li>
+     </ul>
+                </div>
+                <!-- Collapsible content -->
+
+            </div>
 
 
 
