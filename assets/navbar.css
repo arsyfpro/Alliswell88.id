@@ -1,0 +1,23 @@
+
+.navbar { // the initial style of the navbar
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background: #333;
+    color: #333;
+    transition: all 0.3s;
+}
+
+ .navbar-dark {
+    background-color: #1d5245;
+    font-size:18px;
+    }
+.navbar a {
+    color: #ffc894  !important;
+
+.navbar.compressed { // the styles that overrides the initial style when the user scroll down
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #6dcc7c;
+    color: #6dcc7c;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+}            
