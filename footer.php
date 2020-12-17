@@ -1,53 +1,62 @@
-<footer class="container py-5">
-      <div class="row">
-        <div class="col-12 col-md">
-          <img src="image/thumb.png" width="50px;">
-          <small class="d-block mb-3 text-muted">&copy; 2018-2019</small>
-        </div>
-        <div class="col-6 col-md">
-          <h5>Need Assistance?</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="http://www.google.co.id/">FaQ</a></li>
-            <li><a class="text-muted" href="#">Shipping</a></li>
-            <li><a class="text-muted" href="#">Returns</a></li>
-            <li><a class="text-muted" href="https://www.instagram.com/holy_syid/">Contact</a></li>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!-- Footer -->
+  <section id="footer">
+    <div class="container">
+      <div class="row text-center text-xs-center text-sm-left text-md-left">
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Quick links</h5>
+          <ul class="list-unstyled quick-links">
+            <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>Home</a></li>
+            <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>About</a></li>
+            <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+            <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+            <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>Videos</a></li>
           </ul>
         </div>
-        <div class="col-6 col-md">
-          <h5>The Company</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="http://dirmahasiswa.usu.ac.id/">About Us</a></li>
-            <li><a class="text-muted" href="location.php">Stockists</a></li>
-            <li><a class="text-muted" href="https://id.linkedin.com/">Careers</a></li>
-            <li><a class="text-muted" href="jdih.pom.go.id/uud1945.pdf">Terms</a></li>
-            <li><a class="text-muted" href="https://policies.google.com/privacy?hl=en">Privacy Policy</a></li>
-            <li><a class="text-muted" href="http://www.mayoraindah.co.id/mayora-products/biskuit/">Cookie Consent</a></li>
-
-
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Quick links</h5>
+          <ul class="list-unstyled quick-links">
+            <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>Home</a></li>
+            <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>About</a></li>
+            <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+            <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+            <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>Videos</a></li>
           </ul>
         </div>
-        <div class="col-6 col-md">
-          <h5>Find Us</h5>
-          <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="https://www.instagram.com/studiotembak/">Instagram</a></li>
-            <li><a class="text-muted" href="https://www.facebook.com/rasyid.hafizz">Facebook</a></li>
-            <li><a class="text-muted" href="https://twitter.com/holy_syid">Twitter</a></li>
-            <li><a class="text-muted" href="https://www.youtube.com/channel/UCjT6aiZ7wZdeEvasBvz6cTA">Youtube</a></li>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h5>Quick links</h5>
+          <ul class="list-unstyled quick-links">
+            <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>Home</a></li>
+            <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>About</a></li>
+            <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+            <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+            <li><a href="https://wwwe.sunlimetech.com" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Imprint</a></li>
           </ul>
         </div>
       </div>
-    </footer>
-    <script>
-window.onscroll = function() {myFunction()};
-
-var header = document.getElementById("myHeader");
-var sticky = header.offsetTop;
-
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-}
-</script>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+          <ul class="list-unstyled list-inline social text-center quick-links">
+            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-google-plus"></i></a></li>
+            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02" target="_blank"><i class="fa fa-envelope"></i></a></li>
+          </ul>
+        </div>
+        <hr>
+      </div>  
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+          <p><u><a href="https://www.nationaltransaction.com/">National Transaction Corporation</a></u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis, MN]</p>
+          <p class="h6">© All right Reversed.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Alliswell88.id</a></p>
+        </div>
+        <hr>
+      </div>  
+    </div>
+  </section>
+  <!-- ./Footer -->

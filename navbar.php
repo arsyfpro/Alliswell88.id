@@ -1,38 +1,90 @@
-<nav class="nav navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 bg-white rounded">
-  <a class="navbar-brand" href="index.php"> <img src="image/thumb.png" style="width: 150px;"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-    <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="shop.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Shop
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="buah.php">Masker</a>
-          <a class="dropdown-item" href="sayur.php">Scrunchies</a>
-        </div>
-      </li>
-<?php if (isset($_SESSION["pelanggan"])) :?>
-		<li class="nav-item navbar-right">
-        <a class="nav-link" href="logout.php">Logout</a>
-      </li>	
-      <li class="nav-item  navbar-right">
-        <a class="nav-link" href="riwayat.php">Riwayat Belanja</a>
-      </li> 
-<?php else: ?>
-      <li class="nav-item  navbar-right">
-        <a class="nav-link" href="login.php">Login</a>
-      </li>
-<?php endif?>
-<li class="nav-item  navbar-right">
-        <a class="nav-link" href="keranjang.php">Keranjang</a>
-      </li>
-      <?php if (isset($_SESSION["pelanggan"])) :?>
-      <a href="data_diri.php"><li class="nav-item  navbar-right nav-link"><?php echo $_SESSION['pelanggan']['nama_pelanggan'] ?></li></a>
-      <?php endif?>
 
+
+    <!--Main Navigation-->
+    <header>
+
+        <!--Navbar-->
+        <nav class="navbar navbar-dark navbar-expand-lg  scrolling-navbar">
+
+            <div class="container">
+
+                <!-- Navbar brand -->
+              <ul class="navbar-nav">
+             <li class="nav-item">
+                   <a class="navbar-brand" href="index.php">
+            <img src="icon/logoputih.png" style="height: 30px;">
+              </a>
+            </li>
+          </ul>
+
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse justify-content-center" id="navbar">
+
+
+              <!-- Right -->
+              <ul class="navbar-nav">
+             <li class="nav-item">
+            <a href="#!" class="nav-link navbar-link-2 waves-effect">
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="masker.php" class="nav-link waves-effect">
+            Masker
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="#!" class="nav-link waves-effect">
+            Scrunchie
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="#!" class="nav-link waves-effect">
+            Bundle
+            </a>
+            </li>
+            </ul>
+            </div>
+                    <!-- Links -->
+
+                    <!-- Shopping cart icon -->
+    <ul class="nav justify-content-end" >
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="#!" class="nav-link navbar-link-2 waves-effect">
+          <span class="badge badge-pill badge-danger">1</span>
+          <img src="icon/Cart2.png" height="30"> 
+        </a>
+      </li>
     </ul>
-  </div>
-</nav> 
+
+
+  <ul class="navbar-nav ml-auto nav-flex-icons">
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <img src="icon/People2.png" height="30">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" href="#!">Sign In</a>
+          <a class="dropdown-item" href="#!">Sign Up</a>
+        </div>
+
+         </ul>
+       </li>
+     </ul>
+                </div>
+                <!-- Collapsible content -->
+
+            </div>
+
+        </nav>
+        <!--/.Navbar--> 
+
+
+
+
+      
+
+
+
+    

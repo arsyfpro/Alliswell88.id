@@ -12,57 +12,126 @@ include 'koneksi.php';
 </head>
 <body>
 <?php include "navbar.php";?>
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" style="background: url(image/thumb.png); background-size: 100%;">
-      <div class="col-md-5 p-lg-5 mx-auto my-5">
-       <img src="image/thumb.png" width="400px;">
-        <p class="lead font-weight-normal" style="color: white;">Deskripsi</p>
-      </div>
-      <div class="product-device shadow-sm d-none d-md-block"></div>
-      <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+<!--membuat Carousel -->
+
+    <!-- Section: Block Content -->
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="carousel/Batik.png" alt="First slide">
     </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="carousel/Christmas.png" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="Carousel/Satin.png" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+  <!-- Carousel Wrapper -->
+
+</section>
+<!-- Section: Block Content -->
+
+  <!--end of Carousel -->
+
+
+  <!--index-->
+
+ <div class="container mt-5">
+
+  <style>
+    .card-body {
+      border-bottom-left-radius: inherit !important;
+      border-bottom-right-radius: inherit !important;
+    }
+  </style>
+
+  <!--Section: Content-->
+  <section class="dark-grey-text text-center">
+    
+    <!-- Section heading -->
+    <h3 class="font-weight-bold mb-4 pb-2">Our bestsellers</h3>
+    <!-- Section description -->
+    <p class="grey-text w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit fugit, error amet numquam iure provident voluptate esse quasi nostrum quisquam eum porro a pariatur veniam.</p>
 
     
-        <hr class="featurette-divider">
-         <h2 align="center">alliswell88.id</h2>
-<div class="p-5 p-md-5 m-md-5">
-      <div class="container marketing">
-        <div class="row" align="center">
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="image/thumb.png" alt="Generic placeholder image" width="140" height="140">
-            <h2>Judul Deskripsi</h2>
-            <p>Desc.</p>
-            
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="image/thumb.png" alt="Generic placeholder image" width="140" height="140">
-            <h2>Judul Desk</h2>
-            <p>deskp</p>
-            
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="rounded-circle" src="image/thumb.png" alt="Generic placeholder image" width="140" height="140">
-            <h2>Jdl desk</h2>
-            <p>desk.</p>
-          </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
+ <div class="row">
+<div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="image/natal/christmas-scrunchie.png"></div>
+    <figcaption class="info-wrap">
+        <h4 class="title">Christmas Scrunchie</h4>
+        <p class="desc">Desainnya indah, seindah hari natalmu!</p>
+        <div class="rating-wrap">
+          <div class="label-rating">132 reviews</div>
+          <div class="label-rating">154 orders </div>
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+      <a href="" class="btn btn-sm btn-danger active float-right">Add To Chart</a> 
+      <div class="price-wrap h5">
+        <span class="price-new">Rp.12.000</span> <del class="price-old">Rp14.000</del>
+      </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+<div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="image/Klamby/klamby-mask-lilac.png"> </div>
+    <figcaption class="info-wrap">
+        <h4 class="title">Purple Satin Klamby</h4>
+        <p class="desc">Warnanya manis, semanis senyum kamu!</p>
+        <div class="rating-wrap">
+          <div class="label-rating">132 reviews</div>
+          <div class="label-rating">154 orders </div>
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+        <a href="" class="btn btn-sm btn-danger active float-right">Add To Chart</a> 
+        <div class="price-wrap h5">
+          <span class="price-new">Rp.12.0000</span>
+        </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+<div class="col-md-4">
+  <figure class="card card-product">
+    <div class="img-wrap"><img src="image/satin/satin-scrunchie-greenmint.png"></div>
+    <figcaption class="info-wrap">
+        <h4 class="title">Green Mint Satin Srunchie</h4>
+        <p class="desc">Lembut kan warnanya?</p>
+        <div class="rating-wrap">
+          <div class="label-rating">132 reviews</div>
+          <div class="label-rating">154 orders </div>
+        </div> <!-- rating-wrap.// -->
+    </figcaption>
+    <div class="bottom-wrap">
+        <a href="" class="btn btn-sm btn-danger active float-right">Add To Cart</a> 
+        <div class="price-wrap h5">
+          <span class="price-new">Rp13.000</span>
+        </div> <!-- price-wrap.// -->
+    </div> <!-- bottom-wrap.// -->
+  </figure>
+</div> <!-- col // -->
+</div> <!-- row.// -->
+
+
+
+</div> 
+<!--container.//-->
+
+
 </div>
-        <hr class="featurette-divider">
-         <h1 align="center">Shop Now</h1>
-    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3"><a href="buah.php">
-      <div class="bg-light shadow-sm mx-auto" style="width: 50%; height: 500px; border-radius: 2px 2px 2px 2px; background: url(image/thumb.png); background-size: 117%">
-        <div class="my-3 py-3" >
-          <center><br><br><br><br><br><br><br><h1 class="display-5" style="color: white; size: 250%;">Buah</h1></center>
-           
-        </div></a>
-      </div><a href="sayur.php">
-      <div class="bg-dark shadow-sm mx-auto" style="width: 50%; height: 500px; border-radius: 2px 2px 2px 2px; background: url(image/thumb.png); background-size: 100%">
-        <div class="my-3 p-3">
-          <center><br><br><br><br><br><br><br><h1 class="display-5" style="color: white; size: 250%">Sayur</h1></center>
-        </div></a>
-      </div>
-    </div>
-    
-   
-     <?php include "footer.php";?>
+ <?php include "footer.php";?>
 </body>
 </html>
+
