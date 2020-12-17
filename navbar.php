@@ -4,7 +4,7 @@
     <header>
 
         <!--Navbar-->
-        <nav class="navbar navbar-dark navbar-expand-lg  scrolling-navbar">
+        <nav class="navbar navbar-dark navbar-expand-lg scrolling-navbar">
 
             <div class="container">
 
@@ -12,7 +12,7 @@
               <ul class="navbar-nav">
              <li class="nav-item">
                    <a class="navbar-brand" href="index.php">
-            <img src="icon/logoputih.png" style="height: 30px;">
+            <img src="icon/logoputih.png" height="30">
               </a>
             </li>
           </ul>

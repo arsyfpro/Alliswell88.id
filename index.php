@@ -12,6 +12,7 @@ include 'koneksi.php';
 </head>
 <body>
 <?php include "navbar.php";?>
+
 <!--membuat Carousel -->
 
     <!-- Section: Block Content -->
@@ -67,7 +68,7 @@ include 'koneksi.php';
  <div class="row">
 <div class="col-md-4">
   <figure class="card card-product">
-    <div class="img-wrap"><img src="image/natal/christmas-scrunchie.png"></div>
+    <div class="img-wrap"><img src="image/christmas-scrunchie.png"></div>
     <figcaption class="info-wrap">
         <h4 class="title">Christmas Scrunchie</h4>
         <p class="desc">Desainnya indah, seindah hari natalmu!</p>
@@ -86,7 +87,7 @@ include 'koneksi.php';
 </div> <!-- col // -->
 <div class="col-md-4">
   <figure class="card card-product">
-    <div class="img-wrap"><img src="image/Klamby/klamby-mask-lilac.png"> </div>
+    <div class="img-wrap"><img src="image/klamby-mask-lilac-2.png"> </div>
     <figcaption class="info-wrap">
         <h4 class="title">Purple Satin Klamby</h4>
         <p class="desc">Warnanya manis, semanis senyum kamu!</p>
@@ -105,7 +106,7 @@ include 'koneksi.php';
 </div> <!-- col // -->
 <div class="col-md-4">
   <figure class="card card-product">
-    <div class="img-wrap"><img src="image/satin/satin-scrunchie-greenmint.png"></div>
+    <div class="img-wrap"><img src="image/satin-scrunchie-greenmint.png"></div>
     <figcaption class="info-wrap">
         <h4 class="title">Green Mint Satin Srunchie</h4>
         <p class="desc">Lembut kan warnanya?</p>
