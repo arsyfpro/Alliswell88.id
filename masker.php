@@ -16,19 +16,19 @@ include 'koneksi.php';
     <?php include 'scrsty.php'; ?>
     <title>Masker & Scrunchie</title>
     <style>
-    	a {
-    		color: inherit;
-    		text-decoration: none;
+    	a {	
+    		color: inherit !important;
+    		text-decoration: none !important;
     	}
     	a:hover {
-    		color:#7a7777; 
-    		text-decoration:none; 
-    		cursor:pointer;  
+    		color:#7a7777 !important; 
+    		text-decoration:none !important; 
+    		cursor:pointer !important;  
     	}
     	.page-link {
-    		color: inherit;
-    		text-decoration: none;
-    		outline: none;
+    		color: inherit !important;
+    		text-decoration: none !important;
+    		outline: none !important;
     	}
     </style>
 </head>
