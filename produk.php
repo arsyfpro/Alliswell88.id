@@ -1,3 +1,9 @@
+<?php
+session_start();
+//koneksi ke database
+include 'koneksi.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
