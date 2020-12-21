@@ -65,7 +65,7 @@
           <img src="icon/People2.png" height="30">
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" href="#!">Sign In</a>
+          <a class="dropdown-item" href="login.php">Sign In</a>
           <a class="dropdown-item" href="#!">Sign Up</a>
         </div>
 

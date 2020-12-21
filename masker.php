@@ -40,7 +40,7 @@ include 'koneksi.php';
 <img src="icon/Masker1.png" style="width: 20%;">
 </div><br>
 
-<a href="masker-produk.php" style="width: auto;">
+<a href="produk.php" style="width: auto;">
 <div class="jumbotron jumbotron-fluid" style="background-image: url(image/christmas-mask.png); background-size: cover; padding: 30px; margin: 0px 55px 55px 55px; border-radius: 20px">
   <div class="container">
     <h1 class="display-4">Nama Edisi</h1>
