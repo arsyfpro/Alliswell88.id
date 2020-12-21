@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>DETAIL PER PRODUK</title>
+	<title>Masker & Scrunchie</title>
 	<meta charset="utf-8">
     <?php include 'scrsty.php'; ?>
 </head>

@@ -7,4 +7,5 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <script type="text/javascript" src="assets/js/jquery.js"></script>
 <script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
+<script src="assets/js/popper.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.js"></script>

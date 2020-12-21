@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PRODUK</title>
+	<title>Masker & Scrunchie</title>
 	<meta charset="utf-8">
     <?php include 'scrsty.php'; ?>
 </head>
@@ -10,12 +10,24 @@
 	<?php include 'navbar.php'; ?>
 
 <div class="card" align="center">
-  <div class="card-body">
+  <!-- <div class="card-body">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #48695a">Edisi</a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="3">List Edisi</a>
+          <a class="dropdown-item" href="#">List Edisi</a>
+          <a class="dropdown-item" href="#">List Edisi 2</a>
+          <a class="dropdown-item" href="#">List Edisi 3</a>
       </div>
-  </div>
+  </div> -->
+  <div class="dropdown">
+    <button style="color: #48695a" class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Edisi
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="">HTML</a>
+      <a class="dropdown-item" href="#">Bootstrap 4</a>
+      <a class="dropdown-item" href="#">CodeIgniter</a>
+    </div>
+</div>
 </div>
 
 <div class="container mt-5">

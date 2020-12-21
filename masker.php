@@ -16,19 +16,19 @@ include 'koneksi.php';
     <?php include 'scrsty.php'; ?>
     <title>Masker & Scrunchie</title>
     <style>
-    	a {	
-    		color: inherit !important;
-    		text-decoration: none !important;
+    	.daftar-edisi{	
+    		color: inherit;
+    		text-decoration: none;
     	}
-    	a:hover {
-    		color:#7a7777 !important; 
-    		text-decoration:none !important; 
-    		cursor:pointer !important;  
+    	.daftar-edisi:hover{
+    		color:#7a7777; 
+    		text-decoration:none; 
+    		cursor:pointer;  
     	}
-    	.page-link {
-    		color: inherit !important;
-    		text-decoration: none !important;
-    		outline: none !important;
+    	.page-link{
+    		color: inherit;
+    		text-decoration: none;
+    		outline: none;
     	}
     </style>
 </head>
@@ -40,14 +40,34 @@ include 'koneksi.php';
 <img src="icon/Masker1.png" style="width: 20%;">
 </div><br>
 
-<a href="masker-produk.php" style="width: auto;">
-<div class="jumbotron jumbotron-fluid" style="background-image: url(image/christmas-mask.png); background-size: cover; padding: 30px; margin: 0px 55px 55px 55px; border-radius: 20px">
+<?php
+	$fetch = $koneksi->query("SELECT e.id_edisi, e.edisi, e.foto_masker 
+								FROM produk p JOIN kategori_warna_produk w ON p.stok_produk > 0 AND p.id_warna = w.id_warna 
+								JOIN kategori_produk_edisi e ON w.id_edisi = e.id_edisi GROUP BY e.id_edisi");
+	while($data = $fetch->fetch_assoc()){
+?>
+
+<a class="daftar-edisi" href="produk.php?edisi=<?php echo $data['id_edisi'] ?>" style="width: auto;">
+<div class="jumbotron jumbotron-fluid" style="background-image: url(image/<?php echo $data['foto_masker'] ?>); background-size: cover; background-position: center; padding: 30px; margin: 0px 55px 55px 55px; border-radius: 20px">
   <div class="container">
-    <h1 class="display-4">Nama Edisi</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <strong><h1 class="display-4" style="font-weight: 400;"><?php echo $data['edisi'] ?></h1></strong>
+    <!-- <strong><p class="lead" style="font-weight: 500;">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p></strong> -->
   </div>
 </div>
 </a>
+
+<?php
+	}
+?>
+
+<!-- <a class="daftar-edisi" href="masker-produk.php" style="width: auto;">
+<div class="jumbotron jumbotron-fluid" style="background-image: url(image/spunbond-mask-Creme.png); background-position: center; padding: 30px; margin: 0px 55px 55px 55px; border-radius: 20px">
+  <div class="container">
+    <strong><h1 class="display-4" style="font-weight: 400;">Nama Edisi</h1></strong>
+    <strong><p class="lead" style="font-weight: 500;">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p></strong>
+  </div>
+</div>
+</a> -->
 
 <?php include 'footer.php' ?>
 
