@@ -28,18 +28,18 @@
             </a>
             </li>
             <li class="nav-item">
-            <a href="masker.php" class="nav-link waves-effect">
+            <a href="edisi.php?item=1" class="nav-link waves-effect">
             Masker
             </a>
             </li>
             <li class="nav-item">
-            <a href="#!" class="nav-link waves-effect">
+            <a href="edisi.php?item=2" class="nav-link waves-effect">
             Scrunchie
             </a>
             </li>
             <li class="nav-item">
-            <a href="#!" class="nav-link waves-effect">
-            Bundle
+            <a href="allstuff.php" class="nav-link waves-effect">
+            Shop All
             </a>
             </li>
             </ul>
@@ -65,8 +65,8 @@
           <img src="icon/People2.png" height="30">
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" href="login.php">Sign In</a>
-          <a class="dropdown-item" href="#!">Sign Up</a>
+          <a style="color: #48695a !important;" class="dropdown-item" href="login.php">Sign In</a>
+          <a style="color: #48695a !important;" class="dropdown-item" href="#!">Sign Up</a>
         </div>
 
          </ul>

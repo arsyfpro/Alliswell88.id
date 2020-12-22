@@ -10,6 +10,20 @@ include 'koneksi.php';
     <meta charset="utf-8" />
     <?php include 'scrsty.php'; ?>
     <title>Masker & Scrunchies</title>
+
+    <style type="text/css">
+      .btn-kustom {
+        color: #fff;
+        background-color: #5d8975;
+        border-color: #5d8975;
+      }
+
+      .btn-kustom:hover {
+        color: #fff;
+        background-color: #48695a;
+        border-color: #48695a;
+      }
+    </style>
 </head>
 <body>
 <?php include "navbar.php";?>
@@ -30,7 +44,7 @@ include 'koneksi.php';
 
       <p class="text-center"><a href="" class="text-info">Forgot your password?</a></p>
     <div class="form-group justify-content-center">
-        <button type="submit" class="btn btn-primary"> Login  </button>
+        <button type="submit" class="btn btn-kustom">Login</button>
     </div> <!-- form-group// -->          
       <p class="text-center"><a href="#" class="text-info">Create account</a></p>                                                 
 </form>

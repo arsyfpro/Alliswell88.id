@@ -78,7 +78,7 @@ include 'koneksi.php';
         </div> <!-- rating-wrap.// -->
     </figcaption>
     <div class="bottom-wrap">
-      <a href="" class="btn btn-sm btn-danger active float-right">Add To Chart</a> 
+      <a href="" class="btn btn-sm btn-danger active float-right">Add To Cart</a> 
       <div class="price-wrap h5">
         <span class="price-new">Rp.12.000</span> <del class="price-old">Rp14.000</del>
       </div> <!-- price-wrap.// -->
@@ -87,7 +87,7 @@ include 'koneksi.php';
 </div> <!-- col // -->
 <div class="col-md-4">
   <figure class="card card-product">
-    <div class="img-wrap"><img src="image/klamby-mask-lilac-2.png"> </div>
+    <div class="img-wrap"><img src="image/satin-mask-lilac-2.png"> </div>
     <figcaption class="info-wrap">
         <h4 class="title">Purple Satin Klamby</h4>
         <p class="desc">Warnanya manis, semanis senyum kamu!</p>
@@ -97,7 +97,7 @@ include 'koneksi.php';
         </div> <!-- rating-wrap.// -->
     </figcaption>
     <div class="bottom-wrap">
-        <a href="" class="btn btn-sm btn-danger active float-right">Add To Chart</a> 
+        <a href="" class="btn btn-sm btn-danger active float-right">Add To Cart</a> 
         <div class="price-wrap h5">
           <span class="price-new">Rp.12.0000</span>
         </div> <!-- price-wrap.// -->
