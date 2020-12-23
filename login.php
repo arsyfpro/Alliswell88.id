@@ -15,7 +15,7 @@ include 'koneksi.php';
 <?php include "navbar.php";?>
 <div class="container">
   <form action="#" class="login_design">
-    <h2>User Login</h2><br>
+    <center><h2>User Login</h2></center><br>
     <div class="form-group justify-content-center">
       <label for="email">Email:</label>
       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
@@ -30,7 +30,7 @@ include 'koneksi.php';
 
       <p class="text-center"><a href="" class="text-info">Forgot your password?</a></p>
     <div class="form-group justify-content-center">
-        <button type="submit" class="btn btn-primary"> Login  </button>
+        <center><button type="submit" class="btn btn-primary"> Login  </button></center>
     </div> <!-- form-group// -->          
       <p class="text-center"><a href="#" class="text-info">Create account</a></p>                                                 
 </form>
