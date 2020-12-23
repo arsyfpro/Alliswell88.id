@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2020 at 05:25 AM
+-- Generation Time: Dec 22, 2020 at 03:54 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -194,11 +194,13 @@ CREATE TABLE `produk` (
 
 INSERT INTO `produk` (`id_produk`, `id_jenis`, `id_warna`, `nama_produk`, `harga_produk`, `foto_produk`, `deskripsi_produk`, `stok_produk`) VALUES
 (1, 1, 15, 'Masker Kain Dewasa Katun Linen 2 ply - Brown Sugar', 7500, 'linen-mask-brown-sugar.png', 'Fabric : Katun Linen + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 32),
-(2, 1, 17, 'Masker Kain Dewasa Katun Linen 2 ply - Ash Grey', 7500, 'linen-mask-ash-grey.png', 'Fabric : Katun Linen + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 32),
+(2, 1, 17, 'Masker Kain Dewasa Katun Linen 2 ply - Ash Grey', 7500, 'linen-mask-ash-grey.png', 'Fabric : Katun Linen + Katun Import Jepang <br>\r\nSize : 17 x 13 cm <br>\r\nReady Stock no Pre-Order <br>\r\n- <br>\r\n> Earloop<br>\r\n> Tidak ada lubang tisu<br>\r\n> Karet dapat disesuaikan sendiri (free stopper)<br>\r\n> Tersedia juga dalam model dewasa earloop dan headloop<br>\r\n> Pilihan Motif lain silahkan check di etalase<br>\r\n> Dipacking 1 plastik ziplock/item<br>\r\n-<br>\r\nMOHON DIPERHATIKAN :<br>\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 32),
 (3, 1, 16, 'Masker Kain Dewasa Katun Linen 2 ply - Dark Tosca', 7500, 'linen-mask-dark-tosca.png', 'Fabric : Katun Linen + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 32),
 (4, 1, 21, 'Masker Kain Dewasa Satin 2 ply - Lilac', 12000, 'satin-mask-lilac-2.png', 'Fabric : Satin + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 23),
 (5, 1, 33, 'Masker Kain Dewasa Satin Emboss 2 ply - Gold', 12000, 'emboss-mask-gold.png', 'Fabric : Satin Emboss Glitter + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 2),
-(6, 1, 34, 'Masker Kain Dewasa Satin Emboss 2 ply - Silver', 12000, 'emboss-mask-silver.png', 'Fabric : Satin Emboss Glitter + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 0);
+(6, 1, 34, 'Masker Kain Dewasa Satin Emboss 2 ply - Silver', 12000, 'emboss-mask-silver.png', 'Fabric : Satin Emboss Glitter + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 0),
+(7, 2, 56, 'Ikat Rambut Scrunchie Crepe - Black', 8000, 'crepe-scrunchie-black.png', 'Fabric : Diamond Crepe\r\nSize : approx 12 cm\r\nHarga tertera adalah harga satuan\r\nDipacking satuan dengan plastik ziplock\r\n\r\nNyaman dipakai, ringan, jahitan rapi dan karet kuat (Less Hair Friction & Breakage).\r\n', 4),
+(8, 3, 56, 'Ikat Rambut Scrunchie Crepe Zipper - Black', 12000, 'crepe-scrunchie-black.png', 'Fabric : Diamond Crepe\r\nSize : approx 12 cm\r\nHarga tertera adalah harga satuan\r\nDipacking satuan dengan plastik ziplock\r\n\r\nNyaman dipakai, ringan, jahitan rapi dan karet kuat (Less Hair Friction & Breakage).', 4);
 
 --
 -- Indexes for dumped tables
@@ -269,7 +271,7 @@ ALTER TABLE `kategori_warna_produk`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_produk` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

@@ -2,6 +2,16 @@
 session_start();
 //koneksi ke database
 include 'koneksi.php';
+
+$id = $_GET['id'];
+
+$cekdata = $koneksi->query("SELECT id_produk FROM produk WHERE id_produk = '$id' AND stok_produk > 0")->num_rows;
+
+if ($cekdata == 0){
+  echo "<script>alert('Halaman yang dicari tidak ditemukan!');</script>";
+  echo "<script>window.history.back();</script>";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -15,25 +25,61 @@ include 'koneksi.php';
 
 	<?php include 'navbar.php'; ?>
 
-
 	<div class="card-visible" style="width: 75%; margin: 50px 100px 0px 100px;">
   		<div class="row no-gutters ">
+        <?php
+          $data = $koneksi->query("SELECT * FROM produk WHERE id_produk = '$id'")->fetch_assoc();
+
+          if($data['id_jenis'] == '2'){
+            $cekzipper = $koneksi->query("SELECT * FROM produk WHERE id_warna = '$data[id_warna]' AND id_jenis = '3' AND stok_produk > 0");
+            $adadata = $cekzipper->num_rows;
+
+            if($adadata > 0)
+              $data2 = $cekzipper->fetch_assoc();
+          }
+        ?>
     		<div class="col-md-4">
-  				<img src="image/christmas-scrunchie.png" class="card-img-top" style="border-radius: 30px; margin: 30px 0px 0px 30px" align="center">
+  				<img src="image/<?php echo $data['foto_produk'] ?>" class="card-img-top" style="border-radius: 30px; margin: 30px 0px 0px 30px" align="center">
   			</div>
   			<div class="col-md-8">
   				<div class="card-body" style="margin-left: 150px; width: 100%;">
-    				<h5 class="card-text">nama</h5>
-    				<h5 class="card-text">harga</h5>
+    				<h5 class="card-text"><?php echo $data['nama_produk'] ?></h5>
+
+            <?php if(isset($data2)): ?>
+    				<h5 class="card-text">Rp <?php echo number_format($data['harga_produk']); ?> (Biasa)</h5>
+            <h5 class="card-text">Rp <?php echo number_format($data2['harga_produk']); ?> (Zipper)</h5>
+    				<br>
+            <h6 class="card-text">Tersisa <?php echo number_format($data['stok_produk']); ?> Buah (Biasa)</h6>
+            <h6 class="card-text">Tersisa <?php echo number_format($data2['stok_produk']); ?> Buah (Zipper)</h6>
+            <br><br>
+            <form method="post">
+              <div class="form-group">
+                <select class="form-control" name="tipeScrunchie" style="width: 140px;" required>
+                  <option value="">-Pilih Variasi-</option>
+                  <option value="<?php echo $data['id_produk'] ?>">Biasa</option>
+                  <option value="<?php echo $data2['id_produk'] ?>">Zipper</option>
+                </select>
+              </div>
+              <!-- <div class="form-group"> -->
+                <button name="#!" class="btn btn-sm btn-danger" style="width: 100%">Add To Cart</button>
+              <!-- </div> -->
+            </form>
+
+            <?php else: ?>
+            <h5 class="card-text">Rp <?php echo number_format($data['harga_produk']); ?></h5>
+            <br>
+            <h6 class="card-text">Tersisa <?php echo number_format($data['stok_produk']); ?> Buah</h6>
+    				<button name="#!" class="btn btn-sm btn-danger" style="width: 100%">Add To Cart</button>
+
+            <?php endif ?>
+
     				<br><br>
-    				<a href="keranjang.php" class="btn btn-sm btn-danger" style="width: 100%">Add To Chart</a>
-    				<br><br>
-    				<p style="text-align: justify;">Deskripsi Masker 3 Ply 3Ply isi 2 Box isi100 Pcs Earloop 3 lapis Face Mask. Sablon di dus tidak selalu sama ya. Masker Untuk umum Non Medis Filter 3 Ply. Terdapat aluminum sheet yang bisa diatur sesuai bentuk hidung Anda. Masker 3 ply standart internasional. Masker 3 ply (terdiri dari 3 lapisan, lapisan luar, dalam dan bagian tengah yang berfungsi sebagai filter, bactery filter efficiency 99.9%) dengan tali karet lentur yang dipasang di telinga. Menutup hidup dan mulut dengan sempurna, dan tahan percikan air. Cara pakai mudah dengan menggantungkan tali karet di kedua telinga dan menarik bagian bawah masker hingga menutup sampai dagu. Masker Untuk umum Non Medis Filter 3 Ply. Terdapat aluminum sheet yang bisa diatur sesuai bentuk hidung Anda. Masker 3 ply standart internasional. Masker 3 ply (terdiri dari 3 lapisan, lapisan luar, dalam dan bagian tengah yang berfungsi sebagai filter, bactery filter efficiency 99.9%) dengan tali karet lentur yang dipasang di telinga. Menutup hidup dan mulut dengan sempurna, dan tahan percikan air. Cara pakai mudah dengan menggantungkan tali karet di kedua telinga dan menarik bagian bawah masker hingga menutup sampai dagu.</p>
+    				<pre><p style="text-align: justify;"><?php echo $data['deskripsi_produk']; ?></p></pre>
   				</div>
   			</div>			
   		</div>
-	<br><br>
 	</div>
+  <br>
 
 	<?php include 'footer.php'; ?>
 
