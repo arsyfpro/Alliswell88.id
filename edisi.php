@@ -64,9 +64,9 @@ include 'koneksi.php';
 	   while($data = $fetch->fetch_assoc()){
 ?>
 <a class="daftar-edisi" href="produk.php?produk=<?php echo $jenis; ?>&edisi=<?php echo $data['id_edisi'] ?>" style="width: auto;">
-<div class="jumbotron jumbotron-fluid" style="background-image: url(image/<?php echo $data['foto_produk']; ?>); background-size: cover; background-position: center; padding: 30px; margin: 0px 55px 55px 55px; border-radius: 20px">
+<div class="jumbotron jumbotron-fluid" style="background-image: url(edisi/<?php echo $data['foto_produk']; ?>); background-size: cover; background-position: center; padding: 30px; margin: 0px 55px 55px 55px; border-radius: 20px">
   <div class="container">
-    <strong><h1 class="display-4" style="font-weight: 400;"><?php echo $data['edisi'] ?></h1></strong>
+    <strong><h1 class="display-4" style="font-weight: 400;">.</h1></strong>
     <!-- <strong><p class="lead" style="font-weight: 500;">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p></strong> -->
   </div>
 </div>
@@ -76,7 +76,6 @@ include 'koneksi.php';
 	   }
     }
 ?>
-
 <?php include 'footer.php' ?>
 
 </body>
