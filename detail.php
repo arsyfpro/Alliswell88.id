@@ -74,7 +74,7 @@ if ($cekdata == 0){
             <?php endif ?>
 
     				<br><br>
-    				<pre><p style="text-align: justify;"><?php echo $data['deskripsi_produk']; ?></p></pre>
+    				<p style="text-align: justify;"><?php echo $data['deskripsi_produk']; ?></p>
   				</div>
   			</div>			
   		</div>

@@ -19,13 +19,13 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Masker & Scrunchie</title>
-	<meta charset="utf-8">
+  <title>Masker & Scrunchie</title>
+  <meta charset="utf-8">
     <?php include 'scrsty.php'; ?>
 </head>
 <body>
 
-	<?php include 'navbar.php'; ?>
+  <?php include 'navbar.php'; ?>
 
 <br><br>
 
@@ -52,7 +52,7 @@ session_start();
         }
         while($data = $takeedisi->fetch_assoc()){
       ?>
-      <a style="color: #48695a" class="dropdown-item" href="?produk=<?php echo $jenis ?>&edisi=<?php echo $data['id_edisi'] ?>"><?php echo $data['edisi']; ?></a>
+      <a style="color: #48695a" class="dropdown-item" href="produk.php?produk=<?php echo $jenis ?>&edisi=<?php echo $data['id_edisi'] ?>"><?php echo $data['edisi']; ?></a>
       <?php } ?>
     </div>
   </div>
@@ -75,16 +75,38 @@ session_start();
 
 <div class="row justify-content-center">
   <?php
+    if($_GET['sort'] == "nama-asc"){
+      $kolom = "p.nama_produk";
+      $order = "ASC";
+    }
+    else if($_GET['sort'] == "nama-desc"){
+      $kolom = "p.nama_produk";
+      $order = "DESC";
+    }
+    else if($_GET['sort'] == "harga-asc"){
+      $kolom = "p.harga_produk";
+      $order = "ASC";
+    }
+    else if($_GET['sort'] == "harga-desc"){
+      $kolom = "p.harga_produk";
+      $order = "DESC";
+    }
+    else{
+      echo "<script>alert('Halaman yang dicari tidak ditemukan!');</script>";
+      echo "<script>window.history.back();</script>";
+    }
+
+
     $take = $koneksi->query("SELECT p.id_produk, p.id_warna, p.nama_produk, p.harga_produk, p.foto_produk, p.stok_produk 
                                       FROM produk p JOIN kategori_warna_produk w 
                                       WHERE p.stok_produk > 0 AND p.id_jenis = '$jenis' AND w.id_edisi = '$edisi' AND p.id_warna = w.id_warna 
-                                      GROUP BY p.id_produk ORDER BY p.nama_produk");
+                                      GROUP BY p.id_produk ORDER BY $kolom $order");
 
     if($jenis == 2){
       $take = $koneksi->query("SELECT p.id_produk, p.id_warna, p.nama_produk, p.harga_produk, p.foto_produk, p.stok_produk 
                                       FROM produk p JOIN kategori_warna_produk w 
                                       WHERE p.stok_produk > 0 AND (p.id_jenis = '2' OR p.id_jenis = '3') AND w.id_edisi = '$edisi' AND p.id_warna = w.id_warna 
-                                      GROUP BY p.id_warna ORDER BY p.nama_produk");
+                                      GROUP BY p.id_warna ORDER BY $kolom $order");
     }
 
     if($take->num_rows == 0){
@@ -97,13 +119,13 @@ session_start();
   <div class="col-md-4"> <!-- column -->
     <!-- script -->
       
-  	<a href="detail.php?id=<?php echo $data['id_produk'] ?>" style="color: inherit; text-decoration: none;">
+    <a href="detail.php?id=<?php echo $data['id_produk'] ?>" style="color: inherit; text-decoration: none;">
     <figure class="card card-product"> 
       <div class="img-wrap"><img src="image/<?php echo $data['foto_produk'] ?>"></div>
       <figcaption class="info-wrap">
           <h4 class="title"><?php echo $data['nama_produk']; ?></h4>
           <p class="desc">Stok : <?php echo number_format($data['stok_produk']); ?></p>
-          <!-- <div class="rating-wrap">	
+          <!-- <div class="rating-wrap">  
             <div class="label-rating">132 reviews</div>
             <div class="label-rating">154 orders </div>
           </div> //.rating-wrap.// -->
