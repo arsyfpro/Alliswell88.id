@@ -2,18 +2,6 @@
 session_start();
 //koneksi ke database
     include 'koneksi.php';
-
-    // $cekjenis = $koneksi->query("SELECT id_jenis FROM kategori_produk_jenis WHERE id_jenis = '$_GET[produk]'")->num_rows;
-    // $cekedisi = $koneksi->query("SELECT id_edisi FROM kategori_produk_edisi WHERE id_edisi = '$_GET[edisi]'")->num_rows;
-
-    // if($cekjenis != 0 && $cekedisi != 0){
-    //   $jenis = $_GET['produk'];
-    //   $edisi = $_GET['edisi'];
-    // }
-    // else{
-    //     echo "<script>alert('Halaman yang dicari tidak ditemukan!');</script>";
-    //     echo "<script>window.history.back();</script>";
-    // }
 ?>
 
 <!DOCTYPE html>
@@ -30,28 +18,21 @@ session_start();
 <br><br>
 
 <div class="container" align="center">
-  <!-- <div class="card-body">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #48695a">Edisi</a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">List Edisi</a>
-          <a class="dropdown-item" href="#">List Edisi 2</a>
-          <a class="dropdown-item" href="#">List Edisi 3</a>
-      </div>
-  </div> -->
+
   <div class="dropdown">
     <button style="color: #48695a;" class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Sort By ...
+      <?php if(isset($_GET['sortBy'])){echo "Sort by $_GET[sortBy]";} else{ echo "Sort by ...";} ?>
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a style="color: #48695a" class="dropdown-item" href="?sortBy=name-asc">Nama, A - Z</a>
-      <a style="color: #48695a" class="dropdown-item" href="?sortBy=name-desc">Nama, Z - A</a>
-      <a style="color: #48695a" class="dropdown-item" href="?sortBy=price-asc">Harga, rendah - tinggi</a>
-      <a style="color: #48695a" class="dropdown-item" href="?sortBy=price-desc">Harga, tinggi - rendah</a>
-      <a style="color: #48695a" class="dropdown-item" href="?sortBy=series">Edisi</a>
-      <a style="color: #48695a" class="dropdown-item" href="?sortBy=date-asc">Date, baru - lama</a>
-      <a style="color: #48695a" class="dropdown-item" href="?sortBy=date-desc">Date, lama - baru</a>
-      <a style="color: #48695a" class="dropdown-item" href="?sortBy=mask">Masker</a>
-      <a style="color: #48695a" class="dropdown-item" href="?sortBy=scrunchie">Scrunchie</a>
+      <a style="color: #48695a" class="dropdown-item" href="?sortBy=Nama, A - Z">Nama, A - Z</a>
+      <a style="color: #48695a" class="dropdown-item" href="?sortBy=Nama, Z - A">Nama, Z - A</a>
+      <a style="color: #48695a" class="dropdown-item" href="?sortBy=Harga, rendah - tinggi">Harga, rendah - tinggi</a>
+      <a style="color: #48695a" class="dropdown-item" href="?sortBy=Harga, tinggi - rendah">Harga, tinggi - rendah</a>
+      <a style="color: #48695a" class="dropdown-item" href="?sortBy=Edisi">Edisi</a>
+      <a style="color: #48695a" class="dropdown-item" href="?sortBy=Date, baru - lama">Date, baru - lama</a>
+      <a style="color: #48695a" class="dropdown-item" href="?sortBy=Date, lama - baru">Date, lama - baru</a>
+      <a style="color: #48695a" class="dropdown-item" href="?sortBy=Masker - Scrunchie">Masker - Scrunchie</a>
+      <a style="color: #48695a" class="dropdown-item" href="?sortBy=Scrunchie - Masker">Scrunchie - Masker</a>
     </div>
   </div>
 </div>
@@ -60,46 +41,62 @@ session_start();
 
 <div class="row justify-content-center">
   <?php
+
+        $batas = 6;
+        $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+        $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
+ 
+        $previous = $halaman - 1;
+        $next = $halaman + 1;
+        
+        $data = mysqli_query($koneksi,"SELECT * from produk WHERE stok_produk > 0");
+        $jumlah_data = mysqli_num_rows($data);
+        $total_halaman = ceil($jumlah_data / $batas);
+
+        if($halaman > $total_halaman){
+          echo "<script>alert('Halaman yang dicari tidak ditemukan!');</script>";
+          echo "<script>window.history.back();</script>";
+        }
     
-    $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY nama_produk");
+    $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY nama_produk LIMIT $halaman_awal, $batas");
 
     if(isset($_GET['sortBy'])){
       $sort = $_GET['sortBy'];
 
-      if($sort == "name-asc"){
-        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY nama_produk ASC");
+      if($sort == "Nama, A - Z"){
+        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY nama_produk ASC LIMIT $halaman_awal, $batas");
       }
 
-      else if ($sort == "name-desc"){
-        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY nama_produk DESC");
+      else if ($sort == "Nama, Z - A"){
+        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY nama_produk DESC LIMIT $halaman_awal, $batas");
       }
 
-      else if ($sort == "price-asc"){
-        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY harga_produk ASC");
+      else if ($sort == "Harga, rendah - tinggi"){
+        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY harga_produk ASC LIMIT $halaman_awal, $batas");
       }
 
-      else if ($sort == "price-desc"){
-        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY harga_produk DESC");
+      else if ($sort == "Harga, tinggi - rendah"){
+        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY harga_produk DESC LIMIT $halaman_awal, $batas");
       }
 
-      else if ($sort == "date-asc"){
-        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY id_produk DESC");
+      else if ($sort == "Date, baru - lama"){
+        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY id_produk DESC LIMIT $halaman_awal, $batas");
       }
 
-      else if ($sort == "date-desc"){
-        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY id_produk ASC");
+      else if ($sort == "Date, lama - baru"){
+        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY id_produk ASC LIMIT $halaman_awal, $batas");
       }
 
-      else if ($sort == "series"){
-        $take = $koneksi->query("SELECT p.id_produk, p.id_warna, p.nama_produk, p.harga_produk, p.foto_produk, p.stok_produk FROM produk p JOIN kategori_warna_produk w ON p.id_warna = w.id_warna AND p.stok_produk > 0 JOIN kategori_produk_edisi e ON w.id_edisi = e.id_edisi ORDER BY e.edisi");
+      else if ($sort == "Edisi"){
+        $take = $koneksi->query("SELECT p.id_produk, p.id_warna, p.nama_produk, p.harga_produk, p.foto_produk, p.stok_produk FROM produk p JOIN kategori_warna_produk w ON p.id_warna = w.id_warna AND p.stok_produk > 0 JOIN kategori_produk_edisi e ON w.id_edisi = e.id_edisi ORDER BY e.edisi LIMIT $halaman_awal, $batas");
       }
 
-      else if ($sort == "mask"){
-        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY id_jenis ASC");
+      else if ($sort == "Masker - Scrunchie"){
+        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY id_jenis ASC LIMIT $halaman_awal, $batas");
       }
 
-      else if ($sort == "mask"){
-        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY id_jenis DESC");
+      else if ($sort == "Scrunchie - Masker"){
+        $take = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY id_jenis DESC LIMIT $halaman_awal, $batas");
       }
     }
 
@@ -130,10 +127,40 @@ session_start();
   </div>
   <?php } ?>
 </div>
+<br><br>
+<!-- pagination button -->
+  <nav>
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" <?php if($halaman > 1 && isset($_GET['sortBy'])){ echo "href='?sortBy=$_GET[sortBy]&halaman=$previous'"; } else if($halaman > 1){echo "href='halaman=$previous'";} ?>>Previous</a>
+        </li>
+        <?php
+        if (isset($_GET['sortBy'])) {
+          $sort = $_GET['sortBy'];
+
+          for($x=1;$x<=$total_halaman;$x++){
+          ?>
+          <li class="page-item"><a class="page-link" href="?sortBy=<?php echo $sort ?>&halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+          <?php
+          }
+        }
+        else{
+          for($x=1;$x<=$total_halaman;$x++){
+          ?>
+          <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+          <?php
+          }
+        }
+        ?>
+        <li class="page-item">
+          <a  class="page-link" <?php if($halaman < $total_halaman && isset($_GET['sortBy'])){echo "href='?sortBy=$_GET[sortBy]&halaman=$next'";} else if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a>
+        </li>
+      </ul>
+    </nav>
 
 </div> 
 <!--container.//-->
-
+<br><br>
 <?php include 'footer.php'; ?>
 
 </body>

@@ -59,13 +59,13 @@ session_start();
   <div class="dropdown col-md-2">
     <!-- sortby button -->
     <button style="color: #48695a;" class="btn dropdown-toggle" type="button" id="dropdownMenuButton_sort" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Sort By ...
+      Sort by <?php echo $_GET['sort'] ?>
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_sort">
-      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=nama-asc">Nama, A - Z</a>
-      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=nama-desc">Nama, Z - A</a>
-      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=harga-asc">Harga, rendah - tinggi</a>
-      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=harga-desc">Harga, tinggi - rendah</a>
+      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=Nama, A - Z">Nama, A - Z</a>
+      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=Nama, Z - A">Nama, Z - A</a>
+      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=Harga, rendah - tinggi">Harga, rendah - tinggi</a>
+      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=Harga, tinggi - rendah">Harga, tinggi - rendah</a>
     </div>
   </div>
  </div>
@@ -75,19 +75,19 @@ session_start();
 
 <div class="row justify-content-center">
   <?php
-    if($_GET['sort'] == "nama-asc"){
+    if($_GET['sort'] == "Nama, A - Z"){
       $kolom = "p.nama_produk";
       $order = "ASC";
     }
-    else if($_GET['sort'] == "nama-desc"){
+    else if($_GET['sort'] == "Nama, Z - A"){
       $kolom = "p.nama_produk";
       $order = "DESC";
     }
-    else if($_GET['sort'] == "harga-asc"){
+    else if($_GET['sort'] == "Harga, rendah - tinggi"){
       $kolom = "p.harga_produk";
       $order = "ASC";
     }
-    else if($_GET['sort'] == "harga-desc"){
+    else if($_GET['sort'] == "Harga, tinggi - rendah"){
       $kolom = "p.harga_produk";
       $order = "DESC";
     }

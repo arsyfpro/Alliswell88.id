@@ -37,6 +37,14 @@ if ($cekdata == 0){
             if($adadata > 0)
               $data2 = $cekzipper->fetch_assoc();
           }
+          else if($data['id_jenis'] == '3'){
+            $cekbiasa = $koneksi->query("SELECT * FROM produk WHERE id_warna = '$data[id_warna]' AND id_jenis = '2' AND stok_produk > 0");
+            $adadata = $cekbiasa->num_rows;
+
+            if($adadata > 0)
+              $data2 = $data;
+              $data = $cekbiasa->fetch_assoc();
+          }
         ?>
     		<div class="col-md-4">
   				<img src="image/<?php echo $data['foto_produk'] ?>" class="card-img-top" style="border-radius: 30px; margin: 30px 0px 0px 30px" align="center">
@@ -52,7 +60,7 @@ if ($cekdata == 0){
             <h6 class="card-text">Tersisa <?php echo number_format($data['stok_produk']); ?> Buah (Biasa)</h6>
             <h6 class="card-text">Tersisa <?php echo number_format($data2['stok_produk']); ?> Buah (Zipper)</h6>
             <br><br>
-            <form method="post">
+            <form action="action_cart_in.php" method="get">
               <div class="form-group">
                 <select class="form-control" name="tipeScrunchie" style="width: 140px;" required>
                   <option value="">-Pilih Variasi-</option>
@@ -61,7 +69,7 @@ if ($cekdata == 0){
                 </select>
               </div>
               <!-- <div class="form-group"> -->
-                <button name="#!" class="btn btn-sm btn-danger" style="width: 100%">Add To Cart</button>
+                <button type="submit" class="btn btn-sm btn-danger" style="width: 100%">Add To Cart</button>
               <!-- </div> -->
             </form>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2020 at 01:02 PM
+-- Generation Time: Dec 25, 2020 at 07:19 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -63,7 +63,7 @@ CREATE TABLE `kategori_produk_edisi` (
 --
 
 INSERT INTO `kategori_produk_edisi` (`id_edisi`, `edisi`, `foto_masker`, `foto_scrunchie`) VALUES
-(1, 'Spunbond', 'spundbond-mask.png', ''),
+(1, 'Spunbond', 'spunbond-mask.png', ''),
 (2, 'Linen', 'linen-mask.png', ''),
 (3, 'Satin', 'satin-mask.png', 'satin-scrunchie.png'),
 (4, 'Katun', 'katun-mask.png', 'cotton-scrunchie.png'),

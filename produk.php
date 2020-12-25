@@ -6,7 +6,7 @@ session_start();
     $cekjenis = $koneksi->query("SELECT id_jenis FROM kategori_produk_jenis WHERE id_jenis = '$_GET[produk]'")->num_rows;
     $cekedisi = $koneksi->query("SELECT id_edisi FROM kategori_produk_edisi WHERE id_edisi = '$_GET[edisi]'")->num_rows;
 
-    if($cekjenis != 0 && $cekedisi != 0 && $_GET['produk'] != 3){
+    if($cekjenis > 0 && $cekedisi > 0 && $_GET['produk'] != 3){
       $jenis = $_GET['produk'];
       $edisi = $_GET['edisi'];
     }
@@ -62,10 +62,10 @@ session_start();
       Sort By ...
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_sort">
-      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=nama-asc">Nama, A - Z</a>
-      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=nama-desc">Nama, Z - A</a>
-      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=harga-asc">Harga, rendah - tinggi</a>
-      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=harga-desc">Harga, tinggi - rendah</a>
+      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=Nama, A - Z">Nama, A - Z</a>
+      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=Nama, Z - A">Nama, Z - A</a>
+      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=Harga, rendah - tinggi">Harga, rendah - tinggi</a>
+      <a style="color: #48695a" class="dropdown-item" href="produk_sortBy.php?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&sort=Harga, tinggi - rendah">Harga, tinggi - rendah</a>
     </div>
   </div>
  </div>
@@ -80,18 +80,50 @@ session_start();
                                       WHERE p.stok_produk > 0 AND p.id_jenis = '$jenis' AND w.id_edisi = '$edisi' AND p.id_warna = w.id_warna 
                                       GROUP BY p.id_produk ORDER BY p.nama_produk");
 
+    $banyakdata = $take->num_rows;
+
     if($jenis == 2){
       $take = $koneksi->query("SELECT p.id_produk, p.id_warna, p.nama_produk, p.harga_produk, p.foto_produk, p.stok_produk 
                                       FROM produk p JOIN kategori_warna_produk w 
                                       WHERE p.stok_produk > 0 AND (p.id_jenis = '2' OR p.id_jenis = '3') AND w.id_edisi = '$edisi' AND p.id_warna = w.id_warna 
                                       GROUP BY p.id_warna ORDER BY p.nama_produk");
+
+      $banyakdata = $take->num_rows;
     }
 
-    if($take->num_rows == 0){
+    if($banyakdata == 0){
         echo "<h2 align='center'>Produk kosong.&nbsp;</h2>";
         echo "<br><br><h2 align='center'> Ayo lihat pilihan barang lainnya <a href='allstuff.php'>di sini</a>!</h2>";
     }
-    else{
+
+      $batas = 6;
+      $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+      $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
+ 
+      $previous = $halaman - 1;
+      $next = $halaman + 1;
+        
+      // $data = mysqli_query($koneksi,"select * from pegawai");
+      $jumlah_data = $banyakdata;
+      $total_halaman = ceil($jumlah_data / $batas);
+
+      if($halaman > $total_halaman && $banyakdata != 0){
+          echo "<script>alert('Halaman yang dicari tidak ditemukan!');</script>";
+          echo "<script>window.history.back();</script>";
+      }
+
+      $take = $koneksi->query("SELECT p.id_produk, p.id_warna, p.nama_produk, p.harga_produk, p.foto_produk, p.stok_produk 
+                                      FROM produk p JOIN kategori_warna_produk w 
+                                      WHERE p.stok_produk > 0 AND p.id_jenis = '$jenis' AND w.id_edisi = '$edisi' AND p.id_warna = w.id_warna 
+                                      GROUP BY p.id_produk ORDER BY p.nama_produk LIMIT $halaman_awal, $batas");
+
+      if ($jenis == 2) {
+        $take = $koneksi->query("SELECT p.id_produk, p.id_warna, p.nama_produk, p.harga_produk, p.foto_produk, p.stok_produk 
+                                      FROM produk p JOIN kategori_warna_produk w 
+                                      WHERE p.stok_produk > 0 AND (p.id_jenis = '2' OR p.id_jenis = '3') AND w.id_edisi = '$edisi' AND p.id_warna = w.id_warna 
+                                      GROUP BY p.id_warna ORDER BY p.nama_produk LIMIT $halaman_awal, $batas");
+      }
+
       while ($data = $take->fetch_assoc()){
   ?>
   <div class="col-md-4"> <!-- column -->
@@ -119,9 +151,27 @@ session_start();
   </div>
   <?php 
       }
-    }
   ?>
 </div>
+<br><br>
+<!-- pagination button -->
+  <nav>
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" <?php if($halaman > 1){ echo "href='?produk=$jenis&edisi=$edisi&halaman=$previous'"; } ?>>Previous</a>
+        </li>
+        <?php 
+        for($x=1;$x<=$total_halaman;$x++){
+          ?> 
+          <li class="page-item"><a class="page-link" href="?produk=<?php echo $jenis ?>&edisi=<?php echo $edisi ?>&halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+          <?php
+        }
+        ?>        
+        <li class="page-item">
+          <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?produk=$jenis&edisi=$edisi&halaman=$next'"; } ?>>Next</a>
+        </li>
+      </ul>
+    </nav>
 
 </div> 
 <!--container.//-->
