@@ -141,7 +141,7 @@ session_start();
           </div> //.rating-wrap.// -->
       </figcaption>
       <div class="bottom-wrap">
-        <a href="keranjang.php" class="btn btn-sm btn-danger active float-right">Add To Cart</a> 
+        <a href="action_cart_in.php?id=<?php echo $data['id_produk'] ?>" class="btn btn-sm btn-danger active float-right">Add To Cart</a> 
         <div class="price-wrap h5 float-left">
           <span class="price-new">Rp <?php echo number_format($data['harga_produk']); ?></span>
         </div> <!-- price-wrap.// -->

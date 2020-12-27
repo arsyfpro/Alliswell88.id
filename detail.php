@@ -3,9 +3,7 @@ session_start();
 //koneksi ke database
 include 'koneksi.php';
 
-$id = $_GET['id'];
-
-$cekdata = $koneksi->query("SELECT id_produk FROM produk WHERE id_produk = '$id' AND stok_produk > 0")->num_rows;
+$cekdata = $koneksi->query("SELECT id_produk FROM produk WHERE id_produk = '$_GET[id]' AND stok_produk > 0")->num_rows;
 
 if ($cekdata == 0){
   echo "<script>alert('Halaman yang dicari tidak ditemukan!');</script>";
@@ -28,7 +26,8 @@ if ($cekdata == 0){
 	<div class="card-visible" style="width: 75%; margin: 50px 100px 0px 100px;">
   		<div class="row no-gutters ">
         <?php
-          $data = $koneksi->query("SELECT * FROM produk WHERE id_produk = '$id'")->fetch_assoc();
+
+          $data = $koneksi->query("SELECT * FROM produk WHERE id_produk = '$_GET[id]'")->fetch_assoc();
 
           if($data['id_jenis'] == '2'){
             $cekzipper = $koneksi->query("SELECT * FROM produk WHERE id_warna = '$data[id_warna]' AND id_jenis = '3' AND stok_produk > 0");
@@ -62,7 +61,7 @@ if ($cekdata == 0){
             <br><br>
             <form action="action_cart_in.php" method="get">
               <div class="form-group">
-                <select class="form-control" name="tipeScrunchie" style="width: 140px;" required>
+                <select class="form-control" name="id" style="width: 140px;" required>
                   <option value="">-Pilih Variasi-</option>
                   <option value="<?php echo $data['id_produk'] ?>">Biasa</option>
                   <option value="<?php echo $data2['id_produk'] ?>">Zipper</option>
@@ -77,7 +76,7 @@ if ($cekdata == 0){
             <h5 class="card-text">Rp <?php echo number_format($data['harga_produk']); ?></h5>
             <br>
             <h6 class="card-text">Tersisa <?php echo number_format($data['stok_produk']); ?> Buah</h6>
-    				<button name="#!" class="btn btn-sm btn-danger" style="width: 100%">Add To Cart</button>
+    				<a href="action_cart_in.php?id=<?php echo $data['id_produk'] ?>" class="btn btn-sm btn-danger" style="width: 100%">Add To Cart</a>
 
             <?php endif ?>
 

@@ -1,109 +1,107 @@
+<?php
+	session_start();
+
+	include 'koneksi.php';
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>KERANJANG</title>
+	<title>Masker & Scrunchie</title>
 	<meta charset="utf-8">
     <?php include 'scrsty.php'; ?>
+
+	<style type="text/css">
+      .btn-kustom {
+        color: #fff;
+        background-color: #5d8975;
+        border-color: #5d8975;
+      }
+
+      .btn-kustom:hover {
+        color: #fff;
+        background-color: #48695a;
+        border-color: #48695a;
+      }
+    </style>
+
 </head>
 <body>
 
 <?php include 'navbar.php'; ?>
+<br><br>
+<?php if (empty($_SESSION['cart']) || !isset($_SESSION['cart'])) : ?>
 
-	<div align="center" style="margin: 15px">
-	<div class="card" style="width: 60rem; margin: 30px;">
+<div align="center" style="margin: 170px;">
+	<h3 align="center">Keranjang kamu saat ini kosong.</h3>
+	<h3>Ayo belanja <a href="allstuff.php">di sini</a>!</h3>
+</div>
+
+<?php else: ?>
+	<h2 align="center">Isi Keranjangmu</h2>
+
+	<div style="margin: 15px">
+	  <div class="card" style="width: 73rem; margin: 30px;">
 		<div class="card-body">
-
-			<table class="table table-borderless">
+			<table width="100%" class="table table-borderless">
 			  <thead>
 			    <tr>
-			      <th>
-			      	<div class="form-check">
-					  <input class="form-check-input position-static" type="checkbox" id="#" value="option1" onchange="checkAll(this)" name="chk[]">&nbsp Pilih Semua
-					</div>
-			      </th>
+			      <th>Produk</th>
 			      <th></th>
-			      <th style="text-align: center;">
-			      	<a href="hapusproduk.php"><img src="icon/delete.png" style="width: 25px"></a>
-			      </th>
+			      <th>Harga Satuan</th>
+			      <th>Jumlah</th>
+			      <th>Subtotal</th>
+			      <th></th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <tr>
-			      <td style="width: 10rem">
-			      	<div class="form-check">
-					  <input class="form-check-input position-static" type="checkbox" id="#" name="chkbox[]">
-					</div>
-			      </td>
-			      	<td>
-			      		Nama Produk <br>
-			      		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-</svg> Jumlah <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-  <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-</svg><br>
-			      		Harga
-			  		</td>
-			  		<td style="width: 5rem; text-align: center;">
-			  			<a href="hapusproduk.php"><img src="icon/delete.png" style="width: 25px"></a>
-			  		</td>
-			    </tr>
+	  <form action="updatekeranjang.php" method="get">
+			  	<?php
+			  		$total = 0;
 
+			  		foreach ($_SESSION['cart'] as $id => $jumlah) :
+			  	?>
+			  	<?php
+			  		$data = $koneksi->query("SELECT id_produk, nama_produk, foto_produk, harga_produk, stok_produk FROM produk WHERE id_produk = '$id'")->fetch_assoc();
+			  		$subharga = $data['harga_produk'] * $jumlah;
+			  	?>
 			    <tr>
-			      <td style="width: 10rem">
-			      	<div class="form-check">
-					  <input class="form-check-input position-static" type="checkbox" id="#" name="chkbox[]">
-					</div>
-			      </td>
-			      	<td>
-			      		Nama Produk <br>
-			      		Jumlah <br>
-			      		Harga
-			  		</td>
-			  		<td style="width: 5rem; text-align: center;">
-			  			<a href="hapusproduk.php"><img src="icon/delete.png" style="width: 25px"></a>
-			  		</td>
+			      
+			      	<td><a href="detail.php?id=<?php echo $id ?>"><img width="100px" src="image/<?php echo $data['foto_produk'] ?>"></a></td>
+			      	<td><a style="color: inherit; text-decoration: none;" href="detail.php?id=<?php echo $id ?>"><?php echo $data['nama_produk']; ?></a></td>
+			  		<td>Rp <?php echo number_format($data['harga_produk']); ?>,-</td>
+			  		<td><input type="number" name="jumlah<?php echo $id ?>" value="<?php echo $jumlah; ?>" min="1" max="<?php echo $data['stok_produk']; ?>" style="width: 55px;" required></td>
+			  		<td>Rp <?php echo number_format($subharga); ?>,-</td>
+			  		<td style="text-align: right;"><a href="action_cart_delete.php?id=<?php echo $id ?>" onclick="return confirm('Yakin ingin menghapus item ini?')"><img src="icon/delete.png" style="width: 25px"></a></td>
 			    </tr>
-			    
+			    <?php $total+=$subharga ?>
+				<?php endforeach ?>
 			  </tbody>
 			  <tfoot>
+			  	<tr><td><br></td></tr>
 			  	<tr>
-			  		<th>
-			  			Total
-			  		</th>
-			  		<th style="text-align: right;">
-			  			Rp. 12.000.000
-			  		</th>
-			  		<th style="text-align: right;">
-			  			<a href="beli.php" class="btn btn-sm btn-success" style="font-size: 15px;">&nbsp Beli &nbsp</a> 
-			  		</th>
+			  		<th>Subtotal</th>
+			  		<th></th>
+			  		<th></th>
+			  		<th></th>
+			  		<td style="text-align: right;">
+			  			<strong>Rp <?php echo number_format($total); ?>,-</strong>
+			  			<br>
+			  			Belum termasuk ongkos kirim
+			  		</td>
 			   	</tr>
 			  </tfoot>
 			</table>
 		</div>
-	</div>
+	  </div>
+	  <div style="margin: 30px">
+	    <button type="submit" class="btn btn-outline-secondary">Update Data</button>&nbsp;&nbsp;<button class="btn btn-kustom">Checkout</button>
+	  </div>
+	</form>
 	</div>
 
-<script type="text/javascript">
- function checkAll(ele) {
-      var checkboxes = document.getElementsByTagName('input');
-      if (ele.checked) {
-          for (var i = 0; i < checkboxes.length; i++) {
-              if (checkboxes[i].type == 'checkbox' ) {
-                  checkboxes[i].checked = true;
-              }
-          }
-      } else {
-          for (var i = 0; i < checkboxes.length; i++) {
-              if (checkboxes[i].type == 'checkbox') {
-                  checkboxes[i].checked = false;
-              }
-          }
-      }
-  }
-</script>
-
+<?php endif ?>
+<br><br>
 <?php include 'footer.php'; ?>
 
 </body>

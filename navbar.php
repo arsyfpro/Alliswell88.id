@@ -51,7 +51,16 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <a href="keranjang.php" class="nav-link navbar-link-2 waves-effect">
-          <span class="badge badge-pill badge-danger">1</span>
+          <?php
+            $isikeranjang = 0;
+
+            if (isset($_SESSION['cart'])) {
+              foreach ($_SESSION['cart'] as $id => $jumlah) {
+                $isikeranjang += $jumlah;
+              }
+            }
+          ?>
+          <span class="badge badge-pill badge-danger"><?php echo $isikeranjang ?></span>
           <img src="icon/Cart2.png" height="30"> 
         </a>
       </li>
