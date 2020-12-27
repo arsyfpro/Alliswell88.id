@@ -132,7 +132,7 @@ session_start();
   <nav>
       <ul class="pagination justify-content-center">
         <li class="page-item">
-          <a class="page-link" <?php if($halaman > 1 && isset($_GET['sortBy'])){ echo "href='?sortBy=$_GET[sortBy]&halaman=$previous'"; } else if($halaman > 1){echo "href='halaman=$previous'";} ?>>Previous</a>
+          <a class="page-link" <?php if($halaman > 1 && isset($_GET['sortBy'])){ echo "href='?sortBy=$_GET[sortBy]&halaman=$previous'"; } else if($halaman > 1){echo "href='?halaman=$previous'";} ?>>Previous</a>
         </li>
         <?php
         if (isset($_GET['sortBy'])) {
