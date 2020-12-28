@@ -66,7 +66,6 @@
       </li>
     </ul>
 
-
   <ul class="navbar-nav ml-auto nav-flex-icons">
   <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
@@ -77,7 +76,29 @@
           <a style="color: #48695a !important;" class="dropdown-item" href="login.php">Sign In</a>
           <a style="color: #48695a !important;" class="dropdown-item" href="register.php">Sign Up</a>
         </div>
+      </li>
+<a class="navbar-brand" href="#!" data-toggle="modal" data-target="#myModal">
+    <img src="icon/Search2.png" height="30">
+  </a>
 
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-xl">
+      <!-- konten modal-->
+      <div class="modal-content modal-xl">
+        <!-- heading modal -->
+        <div class="modal-header modal-xl">
+          <form class="form-inline form-xl">
+            <input name="search" class="form-control mb-3" type="search" placeholder="Search" aria-label="Search">
+            <button name="cari" class="btn" type="submit"><img src="icon/Search2.png" height="30"></button>
+          </form>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+      </div>
          </ul>
        </li>
      </ul>
