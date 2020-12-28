@@ -50,6 +50,9 @@
     <ul class="nav justify-content-end" >
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
+		<a class="nav-link navbar-link-2 waves-effect" href="#!" data-toggle="modal" data-target="#myModal"><img src="icon/Search2.png" height="30"></a>
+	  </li>
+      <li class="nav-item">
         <a href="keranjang.php" class="nav-link navbar-link-2 waves-effect">
           <?php
 
@@ -67,21 +70,13 @@
         </a>
       </li>
 
-<<<<<<< HEAD
-  <ul class="navbar-nav ml-auto nav-flex-icons">
-  <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
+      <li class="nav-item">
+        <a <?php if(isset($_SESSION['customer'])){echo "href='profil.php'";} else{echo "href='login.php'";} ?> class="nav-link navbar-link-2 waves-effect">
           <img src="icon/People2.png" height="30">
         </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink-333">
-          <a style="color: #48695a !important;" class="dropdown-item" href="login.php">Sign In</a>
-          <a style="color: #48695a !important;" class="dropdown-item" href="register.php">Sign Up</a>
-        </div>
       </li>
-<a class="navbar-brand" href="#!" data-toggle="modal" data-target="#myModal">
-    <img src="icon/Search2.png" height="30">
-  </a>
+    </ul>
+    </ul>
 
   <!-- Modal -->
   <div id="myModal" class="modal fade" role="dialog">
@@ -91,7 +86,7 @@
         <!-- heading modal -->
         <div class="modal-header modal-xl">
           <form class="form-inline form-xl">
-            <input name="search" class="form-control mb-3" type="search" placeholder="Search" aria-label="Search">
+            <input name="search" class="form-control" type="text" style="width: 376px;" placeholder="Search" aria-label="Search">
             <button name="cari" class="btn" type="submit"><img src="icon/Search2.png" height="30"></button>
           </form>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -100,25 +95,9 @@
     </div>
   </div>
 
-      </div>
-         </ul>
-       </li>
-     </ul>
-=======
-      <li class="nav-item">
-        <a <?php if(isset($_SESSION['customer'])){echo "href='profil.php'";} else{echo "href='login.php'";} ?> class="nav-link navbar-link-2 waves-effect">
-          <img src="icon/People2.png" height="30">
-        </a>
-      </li>
-    </ul>
-    </ul>
->>>>>>> 020b13b22857db4d3a35150a1792859e161e4393
-                </div>
-                <!-- Collapsible content -->
-
-            </div>
-
+    		</div>
         </nav>
+  </header>
         <!--/.Navbar--> 
 
 
