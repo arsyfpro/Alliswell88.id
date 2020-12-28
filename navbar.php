@@ -52,35 +52,28 @@
       <li class="nav-item">
         <a href="keranjang.php" class="nav-link navbar-link-2 waves-effect">
           <?php
-            $isikeranjang = 0;
 
-            if (isset($_SESSION['cart'])) {
-              foreach ($_SESSION['cart'] as $id => $jumlah) {
-                $isikeranjang += $jumlah;
-              }
+            if (isset($_SESSION['customer']) && isset($_SESSION['cart'])){
+              $isikeranjang = 0;
+
+                foreach ($_SESSION['cart'] as $id => $jumlah) {
+                  $isikeranjang += $jumlah;
+                }
+                
+              echo "<span class='badge badge-pill badge-danger'>".$isikeranjang."</span>";
             }
           ?>
-          <span class="badge badge-pill badge-danger"><?php echo $isikeranjang ?></span>
           <img src="icon/Cart2.png" height="30"> 
         </a>
       </li>
-    </ul>
 
-
-  <ul class="navbar-nav ml-auto nav-flex-icons">
-  <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
+      <li class="nav-item">
+        <a <?php if(isset($_SESSION['customer'])){echo "href='profil.php'";} else{echo "href='login.php'";} ?> class="nav-link navbar-link-2 waves-effect">
           <img src="icon/People2.png" height="30">
         </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink-333">
-          <a style="color: #48695a !important;" class="dropdown-item" href="login.php">Sign In</a>
-          <a style="color: #48695a !important;" class="dropdown-item" href="register.php">Sign Up</a>
-        </div>
-
-         </ul>
-       </li>
-     </ul>
+      </li>
+    </ul>
+    </ul>
                 </div>
                 <!-- Collapsible content -->
 

@@ -1,7 +1,14 @@
 <?php
 session_start();
+
 include 'koneksi.php';
 
+if (!isset($_SESSION['customer']) || empty($_SESSION['customer'])) {
+		echo "<script> alert('Silakan login terlebih dahulu!'); </script>";
+        echo "<script> window.location.href = 'login.php'; </script>";
+}
+
+else{
 $id = $_GET['id'];
 
 $data = $koneksi->query("SELECT stok_produk FROM produk WHERE id_produk = '$id'")->fetch_assoc();
@@ -22,5 +29,5 @@ else if (!empty($_SESSION['cart'][$id])){
 
 echo "<script>alert('Produk berhasil dimasukkan ke keranjang!');</script>";
 echo "<script>window.history.back();</script>";
-
+}
 ?>

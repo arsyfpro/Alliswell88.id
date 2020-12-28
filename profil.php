@@ -1,6 +1,11 @@
 <?php
 	session_start();
 
+	if (!isset($_SESSION['customer']) || empty($_SESSION['customer'])) {
+		echo "<script> alert('Silakan login terlebih dahulu!'); </script>";
+        echo "<script> window.location.href = 'login.php'; </script>";
+	}
+
 	include 'koneksi.php';
 ?>
 
@@ -21,7 +26,9 @@
 			<table class="table table-borderless">
 			  <thead>
 			    <tr>
-			      <th colspan="2" style="text-align: center;">Biodata Diri</th>
+			      <th colspan="2" style="text-align: center;">
+			      	Your Account <br><br> <a href="logout.php">Order History</a>
+			  	  </th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -47,11 +54,15 @@
 			      	Jalan Dr. T. Mansur No.9, Padang Bulan, Kec. Medan Baru, Kota Medan, Sumatera Utara 20222
 			      </td>
 			    </tr>
+			    <tr>
+			    	<td><a class="btn btn-secondary" href="edit_profil.php">Edit Data</a></td>
+			    	<td></td>
+			    </tr>
 			  </tbody>
 			</table>
 		</div>
+			<a style="width: 75px; margin-left: 30px" onclick="return confirm('Apakah Anda yakin ingin logout? Semua item dalam keranjang akan hilang.')" class="btn btn-outline-danger" href="logout.php">Logout</a> <br>
 	</div>
-	<a href="editmember.php" class="btn btn-sm btn-success" style="font-size: 15px">Ubah Biodata Diri</a> 
 	</div>
 
 <?php include 'footer.php'; ?>
