@@ -29,19 +29,66 @@ include 'koneksi.php';
 <?php include "navbar.php";?>
 <br><br>
 <div style="width: 600px; color: #48695a;" class="container">
-  <form action="#" class="login_design">
+  <form method="post" class="login_design">
     <center><h2 style="color: #48695a;">Login</h2></center><br>
+
+    <?php
+      if (isset($_POST['tmbllogin'])) {
+        $email = $_POST['email'];
+        $password = $_POST['pwd'];
+
+        $cekakun = $koneksi->query("SELECT * FROM akun WHERE email = '$email'");
+        $hitungakun = $cekakun->num_rows;
+
+        if ($hitungakun == 0) {
+          echo "<div class='alert alert-danger' role='alert'>Username atau password salah!</div>";
+        }
+        else if ($hitungakun == 1) {
+          $data = $cekakun->fetch_assoc();
+
+          if ($data['password'] == $password) {
+
+            if ($data['type_user'] == 1) {
+              $_SESSION['admin'] = $data;
+
+              echo "<script> alert('Login berhasil!') </script>";
+              header("location:admin/index.php");
+            }
+
+            else if ($data['type_user'] == 2){
+              $_SESSION['customer'] = $data;
+
+              echo "<script> alert('Login berhasil!'); </script>";
+              echo "<script> window.location.href = 'index.php'; </script>";
+            }
+
+            else{
+              echo "<div class='alert alert-danger' role='alert'>Username atau password salah!</div>";
+            }
+
+          }
+
+          else{
+            echo "<div class='alert alert-danger' role='alert'>Username atau password salah!</div>";
+          }
+
+        }
+
+      }
+    ?>
+
+
     <div class="form-group justify-content-center">
       <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" placeholder="" name="email">
+      <input type="email" class="form-control" id="email" placeholder="" name="email" required>
     </div>
     <div class="form-group justify-content-center">
       <label for="pwd">Password</label>
-      <input type="password" class="form-control" id="pwd" placeholder="" name="pwd">
+      <input type="password" class="form-control" id="pwd" placeholder="" name="pwd" required>
     </div>
       <p class="text-center"><a href="forgotpassword.php" class="text-info">Forgot your password?</a></p>
     <div class="form-group justify-content-center">
-        <center><button type="submit" class="btn btn-kustom">Login</button></center>
+        <center><button type="submit" name="tmbllogin" class="btn btn-kustom">Login</button></center>
     </div> <!-- form-group// -->          
       <p class="text-center"><a href="register.php" class="text-info">Create account</a></p>                                                 
 </form>

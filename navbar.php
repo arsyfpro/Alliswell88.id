@@ -52,20 +52,22 @@
       <li class="nav-item">
         <a href="keranjang.php" class="nav-link navbar-link-2 waves-effect">
           <?php
-            $isikeranjang = 0;
 
-            if (isset($_SESSION['cart'])) {
-              foreach ($_SESSION['cart'] as $id => $jumlah) {
-                $isikeranjang += $jumlah;
-              }
+            if (isset($_SESSION['customer']) && isset($_SESSION['cart'])){
+              $isikeranjang = 0;
+
+                foreach ($_SESSION['cart'] as $id => $jumlah) {
+                  $isikeranjang += $jumlah;
+                }
+                
+              echo "<span class='badge badge-pill badge-danger'>".$isikeranjang."</span>";
             }
           ?>
-          <span class="badge badge-pill badge-danger"><?php echo $isikeranjang ?></span>
           <img src="icon/Cart2.png" height="30"> 
         </a>
       </li>
-    </ul>
 
+<<<<<<< HEAD
   <ul class="navbar-nav ml-auto nav-flex-icons">
   <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
@@ -102,6 +104,15 @@
          </ul>
        </li>
      </ul>
+=======
+      <li class="nav-item">
+        <a <?php if(isset($_SESSION['customer'])){echo "href='profil.php'";} else{echo "href='login.php'";} ?> class="nav-link navbar-link-2 waves-effect">
+          <img src="icon/People2.png" height="30">
+        </a>
+      </li>
+    </ul>
+    </ul>
+>>>>>>> 020b13b22857db4d3a35150a1792859e161e4393
                 </div>
                 <!-- Collapsible content -->
 

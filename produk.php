@@ -86,7 +86,7 @@ session_start();
       $take = $koneksi->query("SELECT p.id_produk, p.id_warna, p.nama_produk, p.harga_produk, p.foto_produk, p.stok_produk 
                                       FROM produk p JOIN kategori_warna_produk w 
                                       WHERE p.stok_produk > 0 AND (p.id_jenis = '2' OR p.id_jenis = '3') AND w.id_edisi = '$edisi' AND p.id_warna = w.id_warna 
-                                      GROUP BY p.id_warna ORDER BY p.nama_produk");
+                                      ORDER BY p.nama_produk");
 
       $banyakdata = $take->num_rows;
     }
@@ -141,7 +141,13 @@ session_start();
           </div> //.rating-wrap.// -->
       </figcaption>
       <div class="bottom-wrap">
+       <?php if ($jenis == 1): ?>
         <a href="action_cart_in.php?id=<?php echo $data['id_produk'] ?>" class="btn btn-sm btn-danger active float-right">Add To Cart</a> 
+
+       <?php else: ?>
+        <a href="detail.php?id=<?php echo $data['id_produk'] ?>" class="btn btn-sm btn-primary active float-right">Detail</a>
+
+       <?php endif ?>
         <div class="price-wrap h5 float-left">
           <span class="price-new">Rp <?php echo number_format($data['harga_produk']); ?></span>
         </div> <!-- price-wrap.// -->

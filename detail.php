@@ -40,9 +40,10 @@ if ($cekdata == 0){
             $cekbiasa = $koneksi->query("SELECT * FROM produk WHERE id_warna = '$data[id_warna]' AND id_jenis = '2' AND stok_produk > 0");
             $adadata = $cekbiasa->num_rows;
 
-            if($adadata > 0)
+            if($adadata > 0){
               $data2 = $data;
               $data = $cekbiasa->fetch_assoc();
+            }
           }
         ?>
     		<div class="col-md-4">

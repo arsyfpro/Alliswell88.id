@@ -2,6 +2,11 @@
 	session_start();
 
 	include 'koneksi.php';
+
+	if (!isset($_SESSION['customer']) || empty($_SESSION['customer'])) {
+		echo "<script> alert('Silakan login terlebih dahulu!'); </script>";
+        echo "<script> window.location.href = 'login.php'; </script>";
+	}
  ?>
 
 <!DOCTYPE html>
