@@ -53,7 +53,7 @@
 <?php else: ?>
 	<h2 align="center">Isi Keranjangmu</h2>
 
-	<div style="margin: 15px">
+	<div style="margin: 15px" align="center">
 	  <div class="card" style="width: 73rem; margin: 30px;">
 		<div class="card-body">
 			<table width="100%" class="table table-borderless">
@@ -110,7 +110,7 @@
 	  <div style="margin: 30px">
 	    <button type="submit" class="btn btn-outline-secondary" onclick="return confirm('Yakin ingin merubah isi keranjang?')">Update Data</button>
 	    &nbsp;&nbsp;
-	    <button class="btn btn-kustom">Checkout</button>
+	    <a href="checkout.php" class="btn btn-kustom">Checkout</a>
 	  </div>
 	</form>
 	</div>
