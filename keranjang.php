@@ -2,19 +2,16 @@
 	session_start();
 
 	include 'koneksi.php';
-
-	if (!isset($_SESSION['customer']) || empty($_SESSION['customer'])) {
-		echo "<script> alert('Silakan login terlebih dahulu!'); </script>";
-        echo "<script> window.location.href = 'login.php'; </script>";
-	}
  ?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Masker & Scrunchie</title>
-	<meta charset="utf-8">
+
     <?php include 'scrsty.php'; ?>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
 	<style type="text/css">
       .btn-kustom {
@@ -32,6 +29,17 @@
 
 </head>
 <body>
+
+<?php if (!isset($_SESSION['customer']) || empty($_SESSION['customer'])) : ?>
+	<script type="text/javascript">
+		swal({title: "BELUM LOGIN", 
+			  text: "Harap login terlebih dahulu!", 
+			  icon: "warning"
+			}).then(function() {
+				window.location = "login.php";
+			});
+	</script>
+<?php endif ?>
 
 <?php include 'navbar.php'; ?>
 <br><br>
@@ -100,7 +108,9 @@
 		</div>
 	  </div>
 	  <div style="margin: 30px">
-	    <button type="submit" class="btn btn-outline-secondary">Update Data</button>&nbsp;&nbsp;<button class="btn btn-kustom">Checkout</button>
+	    <button type="submit" class="btn btn-outline-secondary" onclick="return confirm('Yakin ingin merubah isi keranjang?')">Update Data</button>
+	    &nbsp;&nbsp;
+	    <button class="btn btn-kustom">Checkout</button>
 	  </div>
 	</form>
 	</div>

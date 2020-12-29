@@ -9,6 +9,7 @@ include 'koneksi.php';
 <head>
     <title>Masker & Scrunchies</title>
     <?php include 'scrsty.php'; ?>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
     <style type="text/css">
       .btn-kustom {
@@ -32,47 +33,95 @@ include 'koneksi.php';
     <h2 align="center">Sign Up</h2><br>
     <p align="center">Let's complete your profile</p>
 
-    <form method="post" id="daftarakun">
+    <div id="alert">
+      
+    </div>
+
+    <form method="post" name="daftarakun">
+
     <div class="form-group justify-content-center">
       <label for="email">Email</label>
-      <input type="email" class="form-control" name="email" required>
+      <input type="email" name="email" id="email" class="form-control" disabled value="<?php echo $_GET['email'] ?>" required>
     </div>
+
     <div class="form-group justify-content-center">
       <label for="nama">Name</label>
-      <input type="text" name="nama" class="form-control" placeholder="Full name" required>
+      <input type="text" name="nama" id="nama" class="form-control" placeholder="Full name" required>
     </div>
+
     <div class="form-group justify-content-center">
       <label for="nope">No. HP</label>
-      <input type="text" name="nope" onkeypress="return hanyaAngka(event)" class="form-control" placeholder="Phone Number" required>
+      <input type="text" name="nope" id="nope" onkeypress="return hanyaAngka(event)" class="form-control" placeholder="Phone Number" required>
     </div>
+
     <div class="form-group">
-      <label for="password">Password</label>
-      <input id="passw" type="password" class="form-control" name="password" placeholder="Password" required>
+      <label for="passw">Password</label>
+      <input id="passw" type="password" name="password" class="form-control" placeholder="Password" required>
     </div>
+
     <div class="form-group">
       <label for="password2">Confirmation Password</label>
-      <input type="password" class="form-control" name="password2" placeholder="Password (again)" required>
+      <input type="password" name="password2" id="password2" class="form-control" placeholder="Password (again)" required>
     </div>
 
     <br>
 
     <div align="center" class="form-group">
-      <button class="btn btn-kustom">Register</button>
+      <button type="submit" name="sendData" class="btn btn-kustom">Register</button>
     </div> 
     </form>
   </div>
 
+<br>
+<br>
+<br>
 
+<?php
 
-<br>
-<br>
-<br>
+    if (isset($_POST['sendData'])) {
+      $email = $_GET['email'];
+      $nama = $_POST['nama'];
+      $nope = $_POST['nope'];
+      $password = $_POST['password'];
+
+      $cek = $koneksi->query("SELECT id_akun FROM akun WHERE email = '$email'");
+      $hitungakun = $cek->num_rows;
+
+      if ($hitungakun > 0) {
+        echo  '<script type="text/javascript">
+                        swal({title: "Registrasi Gagal!", 
+                          text: "Email telah digunakan.", 
+                          icon: "error"
+                        }).then(function() {
+                          window.location = "register.php";
+                        });
+                     </script>';
+      }
+      else{
+        $type = 2;
+
+        $koneksi->query("INSERT INTO akun (email, password, nama, no_hp, type_user)
+                          VALUES ('$email', '$password', '$nama', '$nope', '$type')");
+
+        echo  '<script type="text/javascript">
+                        swal({title: "Registrasi Berhasil!", 
+                          text: "", 
+                          icon: "success"
+                        }).then(function() {
+                          window.location = "login.php";
+                        });
+                     </script>';
+      }
+    }
+
+  ?>
 
  <?php include "footer.php";?>
-
- <script type="text/javascript">
-     $(document).ready(function(){
-      $('#daftarakun').validate({
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      $("form[name='daftarakun']").validate({
         rules:{
           email:{
             email : true
@@ -100,7 +149,7 @@ include 'koneksi.php';
           },
           nama:{
             required : "<font color = 'red'>Nama tidak boleh kosong!</font>",
-            minlength : "Nama minimal 3 karakter.",
+            minlength : "Nama minimal 5 karakter.",
             maxlength : "Nama maksimal 100 karakter."
           },
           nope:{
@@ -119,7 +168,7 @@ include 'koneksi.php';
           }
         }
       });
-     });
+    });
   </script>
 
   <script>

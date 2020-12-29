@@ -1,11 +1,25 @@
+<head>
+	<?php include 'scrsty.php'; ?>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+<body>
 <?php
 session_start();
 
 include 'koneksi.php';
 
+
+
 if (!isset($_SESSION['customer']) || empty($_SESSION['customer'])) {
-		echo "<script> alert('Silakan login terlebih dahulu!'); </script>";
-        echo "<script> window.location.href = 'login.php'; </script>";
+	echo  '<script type="text/javascript">
+			swal({title: "BELUM LOGIN", 
+			  text: "Harap login terlebih dahulu!", 
+			  icon: "warning"
+			}).then(function() {
+				window.location = "login.php";
+			});
+		</script>';
 }
 
 else{
@@ -27,7 +41,17 @@ else if (!empty($_SESSION['cart'][$id])){
 
 }
 
-echo "<script>alert('Produk berhasil dimasukkan ke keranjang!');</script>";
-echo "<script>window.history.back();</script>";
+echo  '<script type="text/javascript">
+                        swal({title: "", 
+                          text: "Item telah masuk ke keranjang!", 
+                          icon: "success"
+                        }).then(function() {
+                          window.history.back();
+                        });
+                     </script>';
+
+// echo "<script>alert('Produk berhasil dimasukkan ke keranjang!');</script>";
+// echo "<script>window.history.back();</script>";
 }
 ?>
+</body>

@@ -34,24 +34,31 @@
 			  <tbody>
 			    <tr>
 			      <td>Nama</td>
-			      <td>nama member</td>
+			      <td><?php echo $_SESSION['customer']['nama']; ?></td>
 			    </tr>
 			    <tr>
 			      <td>Email</td>
-			      <td>email member</td>
+			      <td><?php echo $_SESSION['customer']['email']; ?></td>
 			    </tr>
 			    <tr>
 			      <td>Password</td>
-			      <td>password member</td>
+			      <td><input class="form control" style="border: none;" type="Password" value="****" disabled></td>
 			    </tr>
 			    <tr>
 			      <td>No Hp</td>
-			      <td>no hp member</td>
+			      <td><?php echo $_SESSION['customer']['no_hp']; ?></td>
 			    </tr>
 			    <tr>
 			      <td>Alamat</td>
 			      <td style="width: 40rem; text-align: justify;">
-			      	Jalan Dr. T. Mansur No.9, Padang Bulan, Kec. Medan Baru, Kota Medan, Sumatera Utara 20222
+			      	<?php 
+			      		if($_SESSION['customer']['alamat'] != '') {
+			      			$alamat = $_SESSION['customer']['alamat'].", ".$_SESSION['customer']['kode_pos']; echo $alamat;
+			      		}
+			      		else {
+			      			echo "";
+			      		}
+			      	?>
 			      </td>
 			    </tr>
 			    <tr>

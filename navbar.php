@@ -23,10 +23,6 @@
 
               <!-- Right -->
               <ul class="navbar-nav">
-             <li class="nav-item">
-            <a href="#!" class="nav-link navbar-link-2 waves-effect">
-            </a>
-            </li>
             <li class="nav-item">
             <a href="edisi.php?item=1" class="nav-link waves-effect">
             Masker
@@ -85,9 +81,9 @@
       <div class="modal-content modal-xl">
         <!-- heading modal -->
         <div class="modal-header modal-xl">
-          <form class="form-inline form-xl">
-            <input name="search" class="form-control" type="text" style="width: 376px;" placeholder="Search" aria-label="Search">
-            <button name="cari" class="btn" type="submit"><img src="icon/Search2.png" height="30"></button>
+          <form action="search.php" method="get" class="form-inline form-xl">
+            <input name="keyword" class="form-control" type="text" style="width: 376px;" placeholder="Search" aria-label="Search">
+            <button class="btn" type="submit"><img src="icon/Search2.png" height="30"></button>
           </form>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>

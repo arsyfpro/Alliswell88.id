@@ -9,6 +9,7 @@ include 'koneksi.php';
 <head>
     <meta charset="utf-8" />
     <?php include 'scrsty.php'; ?>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Masker & Scrunchies</title>
 
     <style type="text/css">
@@ -41,7 +42,7 @@ include 'koneksi.php';
         $hitungakun = $cekakun->num_rows;
 
         if ($hitungakun == 0) {
-          echo "<div class='alert alert-danger' role='alert'>Username atau password salah!</div>";
+          echo "<div class='alert alert-danger' role='alert'>Email atau password salah!</div>";
         }
         else if ($hitungakun == 1) {
           $data = $cekakun->fetch_assoc();
@@ -58,18 +59,24 @@ include 'koneksi.php';
             else if ($data['type_user'] == 2){
               $_SESSION['customer'] = $data;
 
-              echo "<script> alert('Login berhasil!'); </script>";
-              echo "<script> window.location.href = 'index.php'; </script>";
+              echo  '<script type="text/javascript">
+                        swal({title: "Login Berhasil!", 
+                          text: "", 
+                          icon: "success"
+                        }).then(function() {
+                          window.location = "index.php";
+                        });
+                     </script>';
             }
 
             else{
-              echo "<div class='alert alert-danger' role='alert'>Username atau password salah!</div>";
+              echo "<div class='alert alert-danger' role='alert'>Email atau password salah!</div>";
             }
 
           }
 
           else{
-            echo "<div class='alert alert-danger' role='alert'>Username atau password salah!</div>";
+            echo "<div class='alert alert-danger' role='alert'>Email atau password salah!</div>";
           }
 
         }
