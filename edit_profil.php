@@ -76,7 +76,7 @@
 		  </div>
 
 		 <div class="form-group row">
-		    <label class="col-sm-2 col-form-label" for="passbaru">Password baru</label>
+		    <label class="col-sm-2 col-form-label" for="passbaru" style="font-size: 13.5px !important;">Password baru (optional)</label>
 		    <div class="col-sm-10">
 		      <input type="password" name="passbaru" class="form-control" id="passbaru">
 		    </div>

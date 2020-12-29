@@ -1,3 +1,34 @@
+<?php
+	session_start();
+
+	include 'koneksi.php';
+
+	if (!isset($_SESSION['customer']) || empty($_SESSION['customer'])) {
+		echo "<script>alert('Silakan login terlebih dahulu!')</script>";
+		echo "<script> window.location.href = 'login.php'; </script>";
+	}
+	else if (!isset($_SESSION['cart']) || empty($_SESSION['cart']) || !empty($_SESSION['cart']) == 0) {
+		echo "<script>alert('Keranjang kamu kosong!')</script>";
+		echo "<script> window.location.href = 'allstuff.php'; </script>";
+	}
+	else if ($_SESSION['customer']['alamat'] == '') {
+		echo "<script>alert('Harap isi alamat kamu terlebih dahulu!')</script>";
+		echo "<script> window.location.href = 'edit_profil.php'; </script>";
+	}
+
+	if (!isset($_POST['submitOngkir'])) {
+		echo "<script> window.location.href = 'keranjang.php'; </script>";
+	}
+
+	$layanan = explode(",", $_POST['pilOngkir']);
+
+	$kurir = $_POST['kurir'];
+	$tujuan = $_POST['kotaTujuan'].", ".$_POST['provTujuan'];
+	$jenisLayanan = $layanan[0];
+	$tarif = $layanan[1];
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,12 +56,28 @@
 <div style="margin: 15px" align="center">
 	  <div class="card" style="width: 73rem; margin: 30px;">
 		<div class="card-body">
-			OPSI PENGIRIMAN
-
+			<h5>Opsi Pengiriman</h5>
+			<br><br>
 			<table width="100%">
 				<tr>
-			  		<th>Subtotal untuk Pengiriman</th>
-			  		<th>Rp. ,-</th>
+					<th>Kurir</th>
+					<th>Tujuan</th>
+					<th>Jenis Layanan</th>
+					<th>Tarif</th>
+				</tr>
+				<tr><td><br></td></tr>
+				<tr>
+					<td><?= $kurir ?></td>
+					<td><?= $tujuan ?></td>
+					<td><?= $jenisLayanan ?></td>
+					<td>Rp <?= number_format($tarif) ?>,-</td>
+				</tr>
+				<tr><td><br></td></tr>
+				<tr><td><br></td></tr>
+				<tr><td><br></td></tr>
+				<tr>
+			  		<th colspan="3">Subtotal untuk Pengiriman</th>
+			  		<th>Rp <?= number_format($tarif) ?>,-</th>
 			  	</tr>
 			</table>
 

@@ -2,6 +2,11 @@
 session_start();
 //koneksi ke database
 include 'koneksi.php';
+
+if (isset($_SESSION['customer']) || !empty($_SESSION['customer'])) {
+  header("location:index.php");
+}
+
 ?>
 
 <!DOCTYPE html>
