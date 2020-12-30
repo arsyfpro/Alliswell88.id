@@ -6,6 +6,9 @@ include 'koneksi.php';
 if (isset($_SESSION['customer']) || !empty($_SESSION['customer'])) {
   header("location:index.php");
 }
+else if(isset($_SESSION['admin'])){
+  header("location:admin/index.php");
+}
 
 ?>
 
@@ -98,7 +101,8 @@ if (isset($_SESSION['customer']) || !empty($_SESSION['customer'])) {
       <label for="pwd">Password</label>
       <input type="password" class="form-control" id="pwd" placeholder="" name="pwd" required>
     </div>
-      <p class="text-center"><a href="forgotpassword.php" class="text-info">Forgot your password?</a></p>
+      <!-- <p class="text-center"><a href="forgotpassword.php" class="text-info">Forgot your password?</a></p> -->
+      <br>
     <div class="form-group justify-content-center">
         <center><button type="submit" name="tmbllogin" class="btn btn-kustom">Login</button></center>
     </div> <!-- form-group// -->          
