@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2020 at 05:12 PM
+-- Generation Time: Dec 30, 2020 at 03:38 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -33,6 +33,7 @@ CREATE TABLE `akun` (
   `password` varchar(255) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `alamat` text NOT NULL,
+  `kode_pos` varchar(5) NOT NULL,
   `no_hp` varchar(20) NOT NULL,
   `type_user` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -41,9 +42,14 @@ CREATE TABLE `akun` (
 -- Dumping data for table `akun`
 --
 
-INSERT INTO `akun` (`id_akun`, `email`, `password`, `nama`, `alamat`, `no_hp`, `type_user`) VALUES
-(1, 'alliswell88id@gmail.com', 'admin123', 'Admin', '-', '-', 1),
-(2, '', '', '', '', '', 0);
+INSERT INTO `akun` (`id_akun`, `email`, `password`, `nama`, `alamat`, `kode_pos`, `no_hp`, `type_user`) VALUES
+(1, 'alliswell88id@gmail.com', 'admin123', 'Admin', '-', '', '-', 1),
+(2, 'arsyfgdrive@gmail.com', '654321', 'Arsya Fikri', 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara', '20127', '082212347896', 2),
+(3, 'arsya@mail.com', '123456', 'Arsya Fikri', '', '', '082275809719', 2),
+(4, 'arsya@email.com', '123456', 'Arsya Fikri', '', '', '0812457868', 2),
+(5, 'email@tes.com', '123456', 'Testing', '', '', '123456789', 2),
+(6, 'a@c.c', '123456', 'sdasdas', '', '', '5265165115', 2),
+(7, 'm@a.f', '123456', 'Arsya', 'Jl. Medan-Binjai', '20127', '87884546484', 2);
 
 -- --------------------------------------------------------
 
@@ -174,6 +180,83 @@ INSERT INTO `kategori_warna_produk` (`id_warna`, `id_edisi`, `warna`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pembayaran`
+--
+
+CREATE TABLE `pembayaran` (
+  `id_pembayaran` int(5) NOT NULL,
+  `id_pesanan` int(5) NOT NULL,
+  `nama_pembayar` varchar(50) NOT NULL,
+  `metode_bayar` varchar(40) NOT NULL,
+  `tanggal` varchar(12) NOT NULL,
+  `bukti_pembayaran` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pembayaran`
+--
+
+INSERT INTO `pembayaran` (`id_pembayaran`, `id_pesanan`, `nama_pembayar`, `metode_bayar`, `tanggal`, `bukti_pembayaran`) VALUES
+(1, 5, 'Fikri', 'OVO', '30-12-2020', '30122020150855_nopem_5_25122019192019_nopem_2_tes123_images.jpeg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pesanan`
+--
+
+CREATE TABLE `pesanan` (
+  `id_pesanan` int(5) NOT NULL,
+  `id_akun` int(5) NOT NULL,
+  `tanggal_pesan` varchar(12) NOT NULL,
+  `subtotal_produk` int(9) NOT NULL,
+  `alamat_kirim` text NOT NULL,
+  `opsi_pengiriman` varchar(50) NOT NULL,
+  `subtotal_pengiriman` int(9) NOT NULL,
+  `status_pesanan` varchar(50) NOT NULL DEFAULT 'Menunggu Pembayaran',
+  `resi_pengiriman` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pesanan`
+--
+
+INSERT INTO `pesanan` (`id_pesanan`, `id_akun`, `tanggal_pesan`, `subtotal_produk`, `alamat_kirim`, `opsi_pengiriman`, `subtotal_pengiriman`, `status_pesanan`, `resi_pengiriman`) VALUES
+(1, 2, '30-12-2020', 48000, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota , 20127', '', 0, 'Menunggu Pembayaran', ''),
+(2, 2, '30-12-2020', 20000, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota , 20127', '', 0, 'Menunggu Pembayaran', ''),
+(3, 2, '30-12-2020', 0, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota , 20127', '', 0, 'Menunggu Pembayaran', ''),
+(4, 2, '30-12-2020', 16000, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota Medan, Sumatera Utara, 20127', 'Jalur Nugraha Ekakurir (JNE), REG', 10000, 'Menunggu Pembayaran', ''),
+(5, 2, '30-12-2020', 20000, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota Medan, Sumatera Utara, 20127', 'Citra Van Titipan Kilat (TIKI), REG', 7000, 'Menunggu Pembayaran', 'JP123789456');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pesanan_produk`
+--
+
+CREATE TABLE `pesanan_produk` (
+  `id_pesanan` int(5) NOT NULL,
+  `id_produk` int(5) NOT NULL,
+  `jumlah_pesanan` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pesanan_produk`
+--
+
+INSERT INTO `pesanan_produk` (`id_pesanan`, `id_produk`, `jumlah_pesanan`) VALUES
+(1, 11, 3),
+(1, 6, 1),
+(2, 16, 1),
+(2, 13, 1),
+(4, 16, 1),
+(4, 7, 1),
+(5, 7, 1),
+(5, 12, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `produk`
 --
 
@@ -185,7 +268,7 @@ CREATE TABLE `produk` (
   `harga_produk` int(10) NOT NULL,
   `foto_produk` varchar(200) NOT NULL,
   `deskripsi_produk` text NOT NULL,
-  `stok_produk` int(3) NOT NULL
+  `stok_produk` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -198,15 +281,16 @@ INSERT INTO `produk` (`id_produk`, `id_jenis`, `id_warna`, `nama_produk`, `harga
 (3, 1, 16, 'Masker Kain Katun Linen 2 ply - Dark Tosca', 7500, 'linen-mask-dark-tosca.png', 'Fabric : Katun Linen + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 32),
 (4, 1, 21, 'Masker Kain Satin 2 ply - Lilac', 12000, 'satin-mask-lilac-2.png', 'Fabric : Satin + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 23),
 (5, 1, 33, 'Masker Kain Satin Emboss 2 ply - Gold', 12000, 'emboss-mask-gold.png', 'Fabric : Satin Emboss Glitter + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 21),
-(6, 1, 34, 'Masker Kain Satin Emboss 2 ply - Silver', 12000, 'emboss-mask-silver.png', 'Fabric : Satin Emboss Glitter + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 20),
-(7, 2, 56, 'Ikat Rambut Scrunchie Crepe - Black', 8000, 'crepe-scrunchie-black.png', 'Fabric : Diamond Crepe\r\nSize : approx 12 cm\r\nHarga tertera adalah harga satuan\r\nDipacking satuan dengan plastik ziplock\r\n\r\nNyaman dipakai, ringan, jahitan rapi dan karet kuat (Less Hair Friction & Breakage).\r\n', 4),
-(8, 3, 56, 'Ikat Rambut Scrunchie Crepe Zipper - Black', 12000, 'crepe-scrunchie-black.png', 'Fabric : Diamond Crepe\r\nSize : approx 12 cm\r\nHarga tertera adalah harga satuan\r\nDipacking satuan dengan plastik ziplock\r\n\r\nNyaman dipakai, ringan, jahitan rapi dan karet kuat (Less Hair Friction & Breakage).', 4),
+(6, 1, 34, 'Masker Kain Satin Emboss 2 ply - Silver', 12000, 'emboss-mask-silver.png', 'Fabric : Satin Emboss Glitter + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 19),
+(7, 2, 56, 'Ikat Rambut Scrunchie Crepe - Black', 8000, 'crepe-scrunchie-black.png', 'Fabric : Diamond Crepe\r\nSize : approx 12 cm\r\nHarga tertera adalah harga satuan\r\nDipacking satuan dengan plastik ziplock\r\n\r\nNyaman dipakai, ringan, jahitan rapi dan karet kuat (Less Hair Friction & Breakage).\r\n', 2),
 (9, 1, 8, 'Masker Kain Spunbond 2 ply - Tosca', 2500, 'spunbond-mask-Tosca.png', 'Bahan Spunbond 2 lapis (sesuai di foto)\r\nBahan nyaman dipakai\r\nDipacking dengan plastik ziplock\r\nJahitan Rapi Rapat Kuat\r\nSangat Cocok untuk di pakai sendiri maupun kegiatan sosial karena harga sangat terjangkau\r\nDapat di cuci dan di gunakan kembali\r\nWarna dikirim sesuai pilihan variant', 795),
 (10, 1, 26, 'Masker Kain Katun 2 ply - Dusty Rose', 12000, 'cotton-mask-dusty-rose.png', 'Fabric : Cotton Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 8),
-(11, 1, 36, 'Masker Kain Tie Dye 2 ply - Coffee Beige', 12000, 'tie-dye-mask-coffee-beige.png', 'Fabric : Tie Dye Rayon Janger + Katun Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 11),
-(12, 1, 48, 'Masker Kain Batik 2 ply - Red', 12000, 'batik-mask-Red-Bata.png', 'Fabric : Batik Sandwos + Katun Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 14),
-(13, 1, 50, 'Masker Kain Christmas 2 ply - Red Ginger', 12000, 'christmas-mask-red-ginger.png', 'Fabric : Katun Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 13),
-(14, 1, 59, 'Masker Kain Silky 2 ply - Maroon', 12000, 'silky-mask-maroon.png', 'Fabric : Satin Jaguar + Katun Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 32);
+(11, 1, 36, 'Masker Kain Tie Dye 2 ply - Coffee Beige', 12000, 'tie-dye-mask-coffee-beige.png', 'Fabric : Tie Dye Rayon Janger + Katun Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 8),
+(12, 1, 48, 'Masker Kain Batik 2 ply - Red', 12000, 'batik-mask-Red-Bata.png', 'Fabric : Batik Sandwos + Katun Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 13),
+(13, 1, 50, 'Masker Kain Christmas 2 ply - Red Ginger', 12000, 'christmas-mask-red-ginger.png', 'Fabric : Katun Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 12),
+(14, 1, 59, 'Masker Kain Silky 2 ply - Maroon', 12000, 'silky-mask-maroon.png', 'Fabric : Satin Jaguar + Katun Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 32),
+(15, 3, 55, 'Ikat Rambut Scrunchie Crepe Zipper - Maroon', 12000, 'crepe-scrunchie-maroon.png', 'Fabric : Diamond Crepe\r\nSize : approx 12 cm\r\nHarga tertera adalah harga satuan\r\nDipacking satuan dengan plastik ziplock\r\n\r\nNyaman dipakai, ringan, jahitan rapi dan karet kuat (Less Hair Friction & Breakage).', 4),
+(16, 2, 55, 'Ikat Rambut Scrunchie Crepe - Maroon', 8000, 'crepe-scrunchie-maroon.png', 'Fabric : Diamond Crepe\r\nSize : approx 12 cm\r\nHarga tertera adalah harga satuan\r\nDipacking satuan dengan plastik ziplock\r\n\r\nNyaman dipakai, ringan, jahitan rapi dan karet kuat (Less Hair Friction & Breakage).', 2);
 
 --
 -- Indexes for dumped tables
@@ -238,6 +322,18 @@ ALTER TABLE `kategori_warna_produk`
   ADD KEY `id_edisi` (`id_edisi`);
 
 --
+-- Indexes for table `pembayaran`
+--
+ALTER TABLE `pembayaran`
+  ADD PRIMARY KEY (`id_pembayaran`);
+
+--
+-- Indexes for table `pesanan`
+--
+ALTER TABLE `pesanan`
+  ADD PRIMARY KEY (`id_pesanan`);
+
+--
 -- Indexes for table `produk`
 --
 ALTER TABLE `produk`
@@ -253,7 +349,7 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT for table `akun`
 --
 ALTER TABLE `akun`
-  MODIFY `id_akun` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_akun` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `kategori_produk_edisi`
@@ -274,10 +370,22 @@ ALTER TABLE `kategori_warna_produk`
   MODIFY `id_warna` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
+-- AUTO_INCREMENT for table `pembayaran`
+--
+ALTER TABLE `pembayaran`
+  MODIFY `id_pembayaran` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `pesanan`
+--
+ALTER TABLE `pesanan`
+  MODIFY `id_pesanan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_produk` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
