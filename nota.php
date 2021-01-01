@@ -134,14 +134,14 @@
 					<table style="font-weight: bold;">
 					  <strong>
 						<tr>
-							<td>BANK BRI</td>
+							<td>Bank BNI</td>
 							<td>&nbsp;:&nbsp;</td>
-							<td>530-301-037-288-537 A/N MHD. ARSYAFIKRI</td>
+							<td>077-922-119-07 a/n. Gabriella Surbakti</td>
 						</tr>
 						<tr>
-							<td>OVO/Gopay/Dana/LinkAja!</td>
+							<td>OVO atau Dana a/n. Gabriella Surbakti</td>
 							<td>&nbsp;:&nbsp;</td>
-							<td>0822-7580-9719</td>
+							<td>0895-3425-17290</td>
 						</tr>
 					  </strong>
 					</table>
@@ -156,14 +156,14 @@
 					<table style="font-weight: bold;">
 					  <strong>
 						<tr>
-							<td>BANK BRI</td>
+							<td>Bank BNI</td>
 							<td>&nbsp;:&nbsp;</td>
-							<td>530-301-037-288-537 A/N MHD. ARSYAFIKRI</td>
+							<td>077-922-119-07 a/n. Gabriella Surbakti</td>
 						</tr>
 						<tr>
-							<td>OVO/Gopay/Dana/LinkAja!</td>
+							<td>OVO atau Dana a/n. Gabriella Surbakti</td>
 							<td>&nbsp;:&nbsp;</td>
-							<td>0822-7580-9719</td>
+							<td>0895-3425-17290</td>
 						</tr>
 					  </strong>
 					</table>
