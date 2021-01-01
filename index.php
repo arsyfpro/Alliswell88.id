@@ -58,74 +58,43 @@ include 'koneksi.php';
 
   <!--Section: Content-->
   <section class="dark-grey-text text-center">
-    
+
+    <h5 class="grey-text w-responsive mx-auto mb-5">Alliswell88.id is a Local Brand for Cloth Masks and Scrunchie with High Quality Fabrics and Trendy Design to keep you protected and fashionable.</h5>
+    <br><br>
     <!-- Section heading -->
-    <h3 class="font-weight-bold mb-4 pb-2">Our bestsellers</h3>
+    <h3 class="font-weight-bold mb-4 pb-2">Special for you</h3>
     <!-- Section description -->
-    <p class="grey-text w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit fugit, error amet numquam iure provident voluptate esse quasi nostrum quisquam eum porro a pariatur veniam.</p>
 
     
  <div class="row">
+<?php
+  $queryambil = $koneksi->query("SELECT id_produk, id_warna, nama_produk, harga_produk, foto_produk, stok_produk FROM produk WHERE stok_produk > 0 ORDER BY rand() LIMIT 6");
+
+  while ($data = $queryambil->fetch_assoc()) {
+?>
 <div class="col-md-4">
   <figure class="card card-product">
-    <div class="img-wrap"><img src="image/christmas-scrunchie.png"></div>
+   <a href="detail.php?id=<?php echo $data['id_produk'] ?>" style="color: inherit; text-decoration: none;">
+    <div class="img-wrap"><img src="image/<?= $data['foto_produk'] ?>"></div>
     <figcaption class="info-wrap">
-        <h4 class="title">Christmas Scrunchie</h4>
-        <p class="desc">Desainnya indah, seindah hari natalmu!</p>
-        <div class="rating-wrap">
-          <div class="label-rating">132 reviews</div>
-          <div class="label-rating">154 orders </div>
-        </div> <!-- rating-wrap.// -->
+        <h4 class="title"><?= $data['nama_produk'] ?></h4>
     </figcaption>
+   </a>
     <div class="bottom-wrap">
-      <a href="" class="btn btn-sm btn-danger active float-right">Add To Cart</a> 
+      <a href="action_cart_in.php?id=<?php echo $data['id_produk'] ?>" class="btn btn-sm btn-danger active float-right">Add To Cart</a> 
       <div class="price-wrap h5">
-        <span class="price-new">Rp.12.000</span> <del class="price-old">Rp14.000</del>
+        <span class="price-new">Rp <?= number_format($data['harga_produk']) ?>,-</span>
       </div> <!-- price-wrap.// -->
     </div> <!-- bottom-wrap.// -->
   </figure>
 </div> <!-- col // -->
-<div class="col-md-4">
-  <figure class="card card-product">
-    <div class="img-wrap"><img src="image/satin-mask-lilac-2.png"> </div>
-    <figcaption class="info-wrap">
-        <h4 class="title">Purple Satin Klamby</h4>
-        <p class="desc">Warnanya manis, semanis senyum kamu!</p>
-        <div class="rating-wrap">
-          <div class="label-rating">132 reviews</div>
-          <div class="label-rating">154 orders </div>
-        </div> <!-- rating-wrap.// -->
-    </figcaption>
-    <div class="bottom-wrap">
-        <a href="" class="btn btn-sm btn-danger active float-right">Add To Cart</a> 
-        <div class="price-wrap h5">
-          <span class="price-new">Rp.12.0000</span>
-        </div> <!-- price-wrap.// -->
-    </div> <!-- bottom-wrap.// -->
-  </figure>
-</div> <!-- col // -->
-<div class="col-md-4">
-  <figure class="card card-product">
-    <div class="img-wrap"><img src="image/satin-scrunchie-greenmint.png"></div>
-    <figcaption class="info-wrap">
-        <h4 class="title">Green Mint Satin Srunchie</h4>
-        <p class="desc">Lembut kan warnanya?</p>
-        <div class="rating-wrap">
-          <div class="label-rating">132 reviews</div>
-          <div class="label-rating">154 orders </div>
-        </div> <!-- rating-wrap.// -->
-    </figcaption>
-    <div class="bottom-wrap">
-        <a href="" class="btn btn-sm btn-danger active float-right">Add To Cart</a> 
-        <div class="price-wrap h5">
-          <span class="price-new">Rp13.000</span>
-        </div> <!-- price-wrap.// -->
-    </div> <!-- bottom-wrap.// -->
-  </figure>
-</div> <!-- col // -->
+<?php } ?>
+
 </div> <!-- row.// -->
 
+<br><br>
 
+<h4>Check all of them out <a href="allstuff.php">here!</a></h4>
 
 </div> 
 <!--container.//-->

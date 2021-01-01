@@ -139,9 +139,9 @@
 							<td>077-922-119-07 a/n. Gabriella Surbakti</td>
 						</tr>
 						<tr>
-							<td>OVO atau Dana a/n. Gabriella Surbakti</td>
+							<td>OVO atau Dana</td>
 							<td>&nbsp;:&nbsp;</td>
-							<td>0895-3425-17290</td>
+							<td>0895-3425-17290 a/n. Gabriella Surbakti</td>
 						</tr>
 					  </strong>
 					</table>
@@ -161,9 +161,9 @@
 							<td>077-922-119-07 a/n. Gabriella Surbakti</td>
 						</tr>
 						<tr>
-							<td>OVO atau Dana a/n. Gabriella Surbakti</td>
+							<td>OVO atau Dana</td>
 							<td>&nbsp;:&nbsp;</td>
-							<td>0895-3425-17290</td>
+							<td>0895-3425-17290 a/n. Gabriella Surbakti</td>
 						</tr>
 					  </strong>
 					</table>
