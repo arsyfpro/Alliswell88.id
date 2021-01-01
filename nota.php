@@ -115,7 +115,7 @@
 			</div>
 
 				<?php elseif ($datauser['status_pesanan'] == "Verifikasi Pembayaran") : ?>
-			<div class="alert alert-info">
+			<div class="alert alert-info" style="width: 73rem; margin-left: 45px">
 				<strong>
 					<p>Pembayaran diterima, harap menunggu sampai proses pembayaran diverifikasi maksimal 2 &times; 24 jam atau hubungi contact kami.</p>
 				  </strong>
@@ -151,7 +151,7 @@
 			<h6>Sudah melakukan pembayaran kembali? Upload bukti pembayaran <a href="pembayaran.php?id=<?= $_GET['id'] ?>&tagihan=<?= $alltagihan ?>">di sini</a>!</h6>
 
 				<?php else : ?>
-			<div class="alert alert-info">
+			<div class="alert alert-info" style="width: 73rem; margin-left: 45px">
 					<p>Silahkan Melakukan Pembayaran sebesar Rp <?= number_format($subtotalproduk + $datauser['subtotal_pengiriman']) ?>,- ke:</p>
 					<table style="font-weight: bold;">
 					  <strong>
@@ -168,7 +168,7 @@
 					  </strong>
 					</table>
 			</div>
-					<h6>Sudah melakukan pembayaran? Upload bukti pembayaran <a href="pembayaran.php?id=<?= $_GET['id'] ?>&tagihan=<?= $alltagihan ?>">di sini</a>!</h6>
+					<h6 style="width: 73rem; margin-left: 45px">Sudah melakukan pembayaran? Upload bukti pembayaran <a href="pembayaran.php?id=<?= $_GET['id'] ?>&tagihan=<?= $alltagihan ?>">di sini</a>!</h6>
 				<?php endif ?>
 		</div>
 </div>
