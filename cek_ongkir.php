@@ -36,10 +36,10 @@
 
 <div class="card">
     <h5 class="card-header text-black" style="background-color: .bg-secondary;">
-        <b>Result:</b>
+        <b>Hasil pencarian:</b>
     </h5>          
     <div class="card-body">
-        <form action="checkout.php" method="post">
+    <form action="checkout.php" method="post">
         <table width="100%">
             <tr>
                 <td width="15%"><b>Kurir</b> </td>
@@ -57,6 +57,13 @@
                 <input type="text" name="provTujuan" value="<?= $provinsitujuan ?>" hidden>
             </tr>
         </table><br>
+    <?php if (empty($data['rajaongkir']['results'][0]['costs'])): ?>
+                <div align="left" class="alert alert-info" role="alert">
+                    Kurir berikut tidak memiliki opsi pengiriman ke tujuan yang dipilih.<br>
+                    Silakan pilih opsi kurir yang berbeda!
+                </div>
+
+    <?php else : ?>
         <table class="table table-striped table-bordered ">
             <thead>
                 <tr>
@@ -84,7 +91,10 @@
             </tbody>
         </table>
         <button type="submit" name="submitOngkir" class="btn btn-kustom float-right">Pilih</button>
-        </form>
+    </form>
+
+    <?php endif ?>
+
     </div>
 </div>
 <?php

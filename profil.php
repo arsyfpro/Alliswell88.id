@@ -27,7 +27,7 @@
 			  <thead>
 			    <tr>
 			      <th colspan="2" style="text-align: center;">
-			      	Your Account <br><br> <a href="logout.php">Order History</a>
+			      	Your Account <br><br> <a href="riwayat.php">Order History</a>
 			  	  </th>
 			    </tr>
 			  </thead>

@@ -115,7 +115,7 @@
 			</div>
 
 				<?php elseif ($datauser['status_pesanan'] == "Verifikasi Pembayaran") : ?>
-			<div class="alert alert-info">
+			<div class="alert alert-info" style="width: 73rem; margin-left: 45px">
 				<strong>
 					<p>Pembayaran diterima, harap menunggu sampai proses pembayaran diverifikasi maksimal 2 &times; 24 jam atau hubungi contact kami.</p>
 				  </strong>
@@ -134,14 +134,14 @@
 					<table style="font-weight: bold;">
 					  <strong>
 						<tr>
-							<td>BANK BRI</td>
+							<td>Bank BNI</td>
 							<td>&nbsp;:&nbsp;</td>
-							<td>530-301-037-288-537 A/N MHD. ARSYAFIKRI</td>
+							<td>077-922-119-07 a/n. Gabriella Surbakti</td>
 						</tr>
 						<tr>
-							<td>OVO/Gopay/Dana/LinkAja!</td>
+							<td>OVO atau Dana</td>
 							<td>&nbsp;:&nbsp;</td>
-							<td>0822-7580-9719</td>
+							<td>0895-3425-17290 a/n. Gabriella Surbakti</td>
 						</tr>
 					  </strong>
 					</table>
@@ -151,24 +151,24 @@
 			<h6>Sudah melakukan pembayaran kembali? Upload bukti pembayaran <a href="pembayaran.php?id=<?= $_GET['id'] ?>&tagihan=<?= $alltagihan ?>">di sini</a>!</h6>
 
 				<?php else : ?>
-			<div class="alert alert-info">
+			<div class="alert alert-info" style="width: 73rem; margin-left: 45px">
 					<p>Silahkan Melakukan Pembayaran sebesar Rp <?= number_format($subtotalproduk + $datauser['subtotal_pengiriman']) ?>,- ke:</p>
 					<table style="font-weight: bold;">
 					  <strong>
 						<tr>
-							<td>BANK BRI</td>
+							<td>Bank BNI</td>
 							<td>&nbsp;:&nbsp;</td>
-							<td>530-301-037-288-537 A/N MHD. ARSYAFIKRI</td>
+							<td>077-922-119-07 a/n. Gabriella Surbakti</td>
 						</tr>
 						<tr>
-							<td>OVO/Gopay/Dana/LinkAja!</td>
+							<td>OVO atau Dana</td>
 							<td>&nbsp;:&nbsp;</td>
-							<td>0822-7580-9719</td>
+							<td>0895-3425-17290 a/n. Gabriella Surbakti</td>
 						</tr>
 					  </strong>
 					</table>
 			</div>
-					<h6>Sudah melakukan pembayaran? Upload bukti pembayaran <a href="pembayaran.php?id=<?= $_GET['id'] ?>&tagihan=<?= $alltagihan ?>">di sini</a>!</h6>
+					<h6 style="width: 73rem; margin-left: 45px">Sudah melakukan pembayaran? Upload bukti pembayaran <a href="pembayaran.php?id=<?= $_GET['id'] ?>&tagihan=<?= $alltagihan ?>">di sini</a>!</h6>
 				<?php endif ?>
 		</div>
 </div>

@@ -91,7 +91,7 @@
 				<?php endforeach ?>
 			  </tbody>
 			  <tfoot>
-			  	<tr><td><br></td></tr>
+			  	<tr><td style="border: none;"><br></td></tr>
 			  	<tr>
 			  		<th>Subtotal</th>
 			  		<th></th>
@@ -102,6 +102,7 @@
 			  			<br>
 			  			Belum termasuk ongkos kirim
 			  		</td>
+			  		<td></td>
 			   	</tr>
 			  </tfoot>
 			</table>

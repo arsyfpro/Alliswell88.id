@@ -188,6 +188,7 @@
 	  	  <form method="post">
 			<button type="submit" name="checkout" class="btn btn-kustom btn-sm btn-block">Buat Pesanan</button>
 		  </form>
+		  	<br>
 			<a href="checkout_ongkir.php" class="btn btn-outline-secondary btn-sm btn-block">Batal</a>
 		</div>
 	</div>
