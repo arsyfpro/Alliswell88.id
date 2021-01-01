@@ -22,15 +22,14 @@ else if (!isset($_SESSION['customer']) OR empty($_SESSION['customer'])) {
 
     <style type="text/css">
       .btn-kustom {
-        color: #5d8975;
-        background-color: #fff;
-        border-color: #5d8975;
+        color: #48695a !important;
+        border-color: #48695a !important;
       }
 
       .btn-kustom:hover {
-        color: #fff;
-        background-color: #48695a;
-        border-color: #48695a;
+        color: #fff !important;
+        background-color: #48695a !important;
+        border-color: #48695a !important;
       }
   </style>
 </head>
@@ -47,7 +46,7 @@ else if (!isset($_SESSION['customer']) OR empty($_SESSION['customer'])) {
 	<br>
 	  <div class="card" style="width: 73rem; margin: 30px;">
 		<div class="card-body">
-			<table id="tabel-data" width="100%" class="table table-borderless">
+			<table id="tabel-data" width="100%" class="table table-hover">
 			  <thead>
 			    <tr>
 			      <th>Order</th>
