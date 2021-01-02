@@ -61,7 +61,7 @@ else if(isset($_SESSION['admin'])){
               $_SESSION['admin'] = $data;
 
               echo "<script> alert('Login berhasil!') </script>";
-              header("location:admin/index.php");
+              echo "<script>location='admin/';</script>";
             }
 
             else if ($data['type_user'] == 2){

@@ -1,7 +1,7 @@
 <?php
-$nopesanan = $_GET['pesanan'];
+$nopesanan = $_GET['id'];
 
-$query=$koneksi->query("SELECT * FROM pemesanan JOIN akun ON pemesanan.username=akun.username WHERE pemesanan.no_pemesanan = '$nopesanan'");
+$query=$koneksi->query("SELECT * FROM pesanan JOIN akun ON pesanan.id_akun=akun.id_akun WHERE pesanan.id_pesanan = '$nopesanan'");
 $detail=$query->fetch_assoc();
 ?>
 
@@ -11,70 +11,71 @@ $detail=$query->fetch_assoc();
 <hr>
 <div class="row">
 	<div class="col-md-4">
-		<h3>Pembelian</h3>
 		<strong>
-			No. Pemesanan 	: <?php echo $detail['no_pemesanan']; ?>
+			Pesanan #<?php echo $detail['id_pesanan']; ?>
 		</strong>
 		<br>
-			Tanggal 		: <?php echo $detail['tanggal_pesan']; ?>
-		<br>
-			Total 	 		: Rp <?php echo number_format($detail['total_bayar']); ?>
+			Tanggal : <?php echo $detail['tanggal_pesan']; ?>
+		<br><br>
+			Subtotal Produk : Rp <?= number_format($detail['subtotal_produk']) ?>,-
+			<br>
+			Subtotal Pengiriman : Rp <?= number_format($detail['subtotal_pengiriman']) ?>,-
+			<br><br>
+			<strong>Total Pembayaran : Rp <?= number_format($detail['subtotal_produk'] + $detail['subtotal_pengiriman']) ?>,-</strong>
 	</div>
 
 	<div class="col-md-4">
-		<h3>Pelanggan</h3>
-		<div>
-			<b><?php echo $detail['nama']; ?></b>
-			<br>
-			<?php echo $detail['no_hp']; ?>
-			<br>
-			<?php echo $detail['email']; ?>
-		</div>
+		<strong>
+			<?= $detail['nama'] ?>
+		</strong>
+		<br>
+			<?= $detail['no_hp'] ?><br>
+			<?= $detail['email'] ?>
 	</div>
 
 	<div class="col-md-4">
-		<h3>Daerah COD</h3>
-		<strong>
-			<?php echo $detail['area_cod']; ?>
-		</strong>
+		<b><?= $detail['opsi_pengiriman'] ?></b>
 		<br>
-			Rp <?php echo number_format($detail['biaya_cod']); ?>
-		<br>
-			<?php echo $detail['alamat']; ?>
+		<?= $detail['alamat_kirim'] ?>
 		<br>
 	</div>
 </div>
 <br>
+<br>
+<h3>Detail Produk</h3>
+<br>
 <table class="table table-bordered">
 	<thead>
 	<tr>
-		<th>No</th>
-		<th>Nama Barang</th>
-		<th>Harga</th>
-		<th>Ukuran</th>
+		<th>No. </th>
+		<th>Produk</th>
+		<th>Harga Satuan</th>
 		<th>Jumlah</th>
-		<th>Total Harga</th>
+		<th>Total</th>
 	</tr>
 	</thead>
 	<tbody>
+	  <?php
+	  	$no = 1;
+		$subtotalproduk = 0;
+
+		$ambildata = $koneksi->query("SELECT p.nama_produk, p.harga_produk, por.jumlah_pesanan FROM pesanan_produk por JOIN produk p ON por.id_produk = p.id_produk WHERE por.id_pesanan = '$_GET[id]'");
+
+		while ($data = $ambildata->fetch_assoc()) {
+	  ?>
 		<tr>
-
-		<?php
-		$nomor=1;
-		$ambil=$koneksi->query("SELECT * FROM pemesanan_barang WHERE no_pemesanan='$_GET[pesanan]'");
-
-		while($pecah=$ambil->fetch_assoc()){
-		  ?>
-	<td><?php echo $nomor;?></td>
-	<td><?php echo $pecah['nama_barang']; ?></td>
-	<td>Rp <?php echo number_format($pecah['harga_barang']); ?>,-</td>
-	<td><?php echo $pecah['ukuran_barang']; ?></td>
-	<td><?php echo $pecah['jumlah_barang']; ?></td>
-	<td>Rp <?php echo number_format($pecah['total_harga']); ?>,-</td>
-
+			<td><?= $no ?></td>
+			<td><?= $data['nama_produk'] ?></td>
+			<td>Rp <?= number_format($data['harga_produk']) ?>,-</td>
+			<td><?= number_format($data['jumlah_pesanan']) ?></td>
+			<td align="right">Rp <?= number_format($data['harga_produk'] * $data['jumlah_pesanan']) ?>,-</td>
 		</tr>
-	<?php
-	$nomor++;
-	 } ?>
+	  <?php 
+
+		$subtotalproduk += $data['harga_produk'] * $data['jumlah_pesanan'];
+		$no++;
+
+		}
+	  ?>
 </tbody>
 </table>

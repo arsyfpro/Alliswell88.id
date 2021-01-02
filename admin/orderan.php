@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-      <link rel="stylesheet" type="text/css" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
@@ -9,94 +9,63 @@
 </head>
 <body>
 
-
+<h2>Daftar orderan</h2>
+<br><br>
 
 <table id="example" class="table table-striped table-bordered" style="width:100%">
-	<h3>Daftar Orderan </h3>
     <thead>
         <tr>
-			<th>Foto</th>
-			<th>ID</th>
-			<th>Nama</th>
-			<th>Harga</th>
-			<th>Stok</th>
-			<th>Deskripsi</th>
+        	<th>No.</th>
+			<th>No. Order</th>
+			<th>Email Pemesan</th>
+			<th>Tanggal Pesan</th>
+			<th>Total Pembayaran</th>
+			<th>Status Pesanan</th>
+			<th></th>
         </tr>
     </thead>
     <tbody>
     <?php
         include 'koneksi.php';
-        $produk = mysqli_query($koneksi,"select * from produk");
+
+        $nomor = 1;
+
+        $produk = mysqli_query($koneksi,"select * from pesanan");
         while($row = mysqli_fetch_array($produk))
         {
-            echo "<tr>
-            <td>".$row['foto_produk']."</td>
-            <td>".$row['id_produk']."</td>
-            <td>".$row['nama_produk']."</td>
-            <td>".$row['harga_produk']."</td>
-            <td>".$row['stok_produk']."</td>
-            <td>".$row['deskripsi_produk']."</td>
-				
-			</td>
-        </tr>";
-        
+        ?>
+        <tr>
+            <td><?= $nomor ?></td>
+            <td><?= $row['id_pesanan'] ?></td>
+            <?php
+            	$user = $koneksi->query("SELECT * FROM akun WHERE id_akun = '$row[id_akun]'")->fetch_assoc();
+            ?>
+            <td><?= $user['email'] ?></td>
+            <td><?= $row['tanggal_pesan'] ?></td>
+            <td>Rp <?= number_format($row['subtotal_produk'] + $row['subtotal_pengiriman']) ?>,-</td>
+            <td>
+            	<?= $row['status_pesanan'] ?>
+            </td>	
+			<td>
+				<a class="btn btn-info btn-sm" href="?halaman=detail&id=<?= $row['id_pesanan'] ?>"><i class="fa fa-list-alt"></i></a>
+            	<?php if($row['status_pesanan'] == "Verifikasi Pembayaran" OR $row['status_pesanan'] == "Pembayaran Berhasil") : ?>
+            		<a href="?halaman=bayar&id=<?= $row['id_pesanan'] ?>" class="btn btn-sm btn-success">Proses</a>
+            	<?php endif ?>
+            </td>
+        </tr>
+
+    <?php
+    	$nomor++;
         }
     ?>
-    </tbody>
 
+    </tbody>
+</table>
     <script>
     $(document).ready(function(){
         $('#example').DataTable();
     });
-</script>
+</script>		
 
-</table>
 </body>
 </html>
-
- 
-</script>
-		
-</table>
-<h3>Daftar Orderan Djadjan</h3>
-<table class="table table-bordered">
-	<thead>
-		<tr>
-			<th>No.</th>
-			<th>No. Pesanan</th>
-			<th>Username</th>
-			<th>Tanggal Pemesanan</th>
-			<th>Total Tagihan</th>
-			<th>Status</th>
-		</tr>
-	</thead>
-	<tbody>
-		<?php
-			$no = 1; 
-			$query = $koneksi->query("SELECT * FROM pemesanan");
-			while ($datapesanan = $query->fetch_assoc()) {
-		?>
-		<tr>
-			<td><?php echo $no; ?></td>
-			<td><?php echo $datapesanan['no_pemesanan']; ?></td>
-			<td><?php echo $datapesanan['username']; ?></td>
-			<td><?php echo $datapesanan['tanggal_pesan']; ?></td>
-			<td>Rp <?php echo number_format($datapesanan['total_bayar']); ?>,-</td>
-			<td><?php echo $datapesanan['status_kirim']; ?></td>
-			<td width="205px">
-				<a class="btn btn-info" href="index.php?halaman=detail&pesanan=<?php echo $datapesanan['no_pemesanan']; ?>">Detail</a>
-			<?php 
-				if($datapesanan['status_kirim'] == "Pengecekan Pembayaran") :
-			?>
-				<a class="btn btn-sm btn-success" href="index.php?halaman=bayar&pesanan=<?php echo $datapesanan['no_pemesanan']; ?>">
-					Cek Pembayaran
-				</a>
-			<?php endif ?>
-			</td>
-		</tr>
-		<?php
-			$no++;
-			}
-		?>
-	</tbody>
-</table>

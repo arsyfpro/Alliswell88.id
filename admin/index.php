@@ -51,7 +51,7 @@ if (!isset($_SESSION['admin'])) {
   <div style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
-font-size: 16px;"><a href="index.php?halaman=logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+font-size: 16px;"><a href="index.php?halaman=logout" class="btn btn-danger square-btn-adjust" onclick="return confirm('Yakin ingin logout?')">Logout</a> </div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation" style="background: #ffffff">
@@ -59,7 +59,8 @@ font-size: 16px;"><a href="index.php?halaman=logout" class="btn btn-danger squar
                 <ul class="nav" id="main-menu">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="index.php?halaman=produk">Produk</a></li>
-                    <li><a href="index.php?halaman=pesanan">Pembelian</a></li>
+                    <li><a href="index.php?halaman=produk_edisi">&nbsp;&nbsp;↳ Daftar Edisi - Produk</a></li>
+                    <li><a href="index.php?halaman=pesanan">Pesanan</a></li>
                     <li><a href="index.php?halaman=user">Akun Pelanggan</a></li>
                 </ul>
                
@@ -72,7 +73,7 @@ font-size: 16px;"><a href="index.php?halaman=logout" class="btn btn-danger squar
                 <div class="row">
                     <div class="col-md-12">
                      <h2>Admin</h2>   
-                        <h5>Hallo Admin <?php echo $_SESSION['admin']['username']; ?></h5>
+                        <h5>Hallo <?php echo $_SESSION['admin']['nama']; ?></h5>
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -80,12 +81,19 @@ font-size: 16px;"><a href="index.php?halaman=logout" class="btn btn-danger squar
                 <?php
                 if (isset($_GET['halaman']))
                 {
-                    if ($_GET['halaman']=="produk")
-                    {
+                    if ($_GET['halaman']=="produk"){
                         include 'produk.php';
                     }
-                    elseif ($_GET['halaman']=="pesanan")
-                    {
+                    elseif ($_GET['halaman']=="produk_edisi"){
+                        include 'produk_edisi.php';
+                    }
+                    elseif ($_GET['halaman']=="produk_edisi_tambah"){
+                        include 'produk_edisi_tambah.php';
+                    }
+                    elseif ($_GET['halaman']=="detail_edisi"){
+                        include 'produk_edisi_detail.php';
+                    }
+                    elseif ($_GET['halaman']=="pesanan"){
                         include 'orderan.php';
                     }
                     elseif ($_GET['halaman']=="user")
@@ -99,10 +107,6 @@ font-size: 16px;"><a href="index.php?halaman=logout" class="btn btn-danger squar
                     elseif ($_GET['halaman']=="inputbarang")
                     {
                         include 'inputbarang.php';
-                    }
-                    elseif ($_GET['halaman']=="hapusbarang")
-                    {
-                        include 'hapusbarang.php';
                     }
                      elseif ($_GET['halaman']=="editbarang")
                     {
@@ -120,12 +124,11 @@ font-size: 16px;"><a href="index.php?halaman=logout" class="btn btn-danger squar
                     {
                         include 'bayar.php';
                     }
-                    elseif ($_GET['halaman']=="riwayat") {
+                    elseif ($_GET['halaman']=="riwayat"){
                         include 'riwayat.php';
                     }
                 }
-                else
-                {
+                else{
                     include 'home.php';
                 }
                 ?>
@@ -138,9 +141,14 @@ font-size: 16px;"><a href="index.php?halaman=logout" class="btn btn-danger squar
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
-      <!-- BOOTSTRAP SCRIPTS -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
+	<script src="ckeditor/ckeditor.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <!-- <script src="assets/js/bootstrap.min.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- METISMENU SCRIPTS -->
     <script src="assets/js/jquery.metisMenu.js"></script>
      <!-- MORRIS CHART SCRIPTS -->
@@ -148,9 +156,6 @@ font-size: 16px;"><a href="index.php?halaman=logout" class="btn btn-danger squar
     <script src="assets/js/morris/morris.js"></script>
       <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
     
 
 </body>

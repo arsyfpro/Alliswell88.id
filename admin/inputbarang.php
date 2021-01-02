@@ -1,72 +1,117 @@
-<h3>Input Barang Djadjan</h3>
+<h3>Tambah Data Produk</h3>
 
 <form enctype="multipart/form-data" method="POST">
 	<table class="table table-borderless">
 		<tr>
 			<td>Nama Produk</td>
 			<td></td>
-			<td><input required class="form-control" type="text" name="nama"></td>
-		</tr>
-		<tr>
-			<td>Harga (Rp)</td>
-			<td></td>
-			<td><input required class="form-control" type="number" min="1" name="harga"></td>
-		</tr>
-		<tr>
-			<td>Stok</td>
-			<td></td>
-			<td><input required class="form-control" type="number" min="0" name="stok" ></td>
-		</tr>
-		<tr>
-			<td>Deskripsi</td>
-			<td></td>
-			<td><textarea required class="form-control" name="deskripsi"></textarea></td>
-		</tr>
-		<tr>
-			<td>Foto</td>
-			<td></td>
-			<td><input class="form-control" type="file" name="foto" required></td>
+			<td><input required class="form-control" type="text" name="nama" placeholder="Nama Produk"></td>
 		</tr>
 		<tr>
 			<td>Jenis</td>
 			<td></td>
 			<td>
 				<select name="jenis" class="form-control" required>
-					<option value="">--Pilih Jenis--</option>
-					<option value="snack">Masker</option>
-					<option value="drink">Scrunchie</option>
+					<option value="">Pilih Jenis</option>
+					<option value="1">Masker</option>
+					<option value="2">Scrunchie - Biasa</option>
+					<option value="3">Scrunchie - Zipper</option>
 				</select>
 			</td>
 		</tr>
+		<tr>
+			<td>Edisi</td>
+			<td></td>
+			<td>
+				<select name="edisi" id="edisi" class="form-control" required>
+					<option value="">Pilih Edisi</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Warna</td>
+			<td></td>
+			<td>
+				<select name="warna" id="warna" class="form-control" required>
+					<option value="">Pilih Warna</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Harga (Rp)</td>
+			<td></td>
+			<td><input required class="form-control" type="number" min="1" name="harga" placeholder="Harga dalam Rupiah"></td>
+		</tr>
+		<tr>
+			<td>Stok</td>
+			<td></td>
+			<td><input required class="form-control" type="number" min="0" name="stok" placeholder="Stok Produk"></td>
+		</tr>
+		<tr>
+			<td>Deskripsi (opsional)</td>
+			<td></td>
+			<td><textarea class="ckeditor" rows="10" cols="100" class="form-control" name="deskripsi" placeholder="Deskripsi lengkap produk"></textarea></td>
+		</tr>
+		<tr>
+			<td>Foto</td>
+			<td></td>
+			<td><input class="form-control" type="file" name="foto" accept="image/*" required></td>
+		</tr>
 	</table>
-	<button class="btn btn-success" name="simpan">Simpan</button>
+   <button class="btn btn-success" onclick="return confirm('Simpan data produk?')" name="simpan">Simpan</button>
 </form>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+		$(document).ready(function(){
+          	$.ajax({
+                type: 'POST',
+              	url: "get_edisi.php",
+              	cache: false, 
+              	success: function(msg){
+                  $("#edisi").html(msg);
+                }
+            });
+
+          	$("#edisi").change(function(){
+          	var edisi = $("#edisi").val();
+	          	$.ajax({
+	          		type: 'POST',
+	              	url: "get_warna.php",
+	              	data: {edisi: edisi},
+	              	cache: false,
+	              	success: function(msg){
+	                  $("#warna").html(msg);
+	                }
+	            });
+            });
+         });
+	</script>
 
 <?php
 
 if (isset($_POST['simpan'])) {
 	$namafotobarang = $_FILES['foto']['name'];
 	$lokasisementarafoto = $_FILES['foto']['tmp_name'];
-	move_uploaded_file($lokasisementarafoto, "../image/produk/".$namafotobarang);
+	move_uploaded_file($lokasisementarafoto, "../image/".$namafotobarang);
 
 		$koneksi->query("INSERT INTO produk(
+			id_jenis,
+			id_warna,
 			nama_produk,
 			harga_produk,
-			stok_produk,
-			deskripsi_produk,
 			foto_produk,
-			jenis)
+			deskripsi_produk,
+			stok_produk)
 			VALUES(
+			'$_POST[jenis]',
+			'$_POST[warna]',
 			'$_POST[nama]',
 			'$_POST[harga]',
-			'$_POST[ukuran]',
-			'$_POST[deskripsi]',
-			'$_POST[stok]',
 			'$namafotobarang',
-			'$_POST[jenis]'
-			)");
+			'$_POST[deskripsi]',
+			'$_POST[stok]')");
 
-		echo "<script>alert('Data Disimpan!');</script>";
+		echo "<script>alert('Data berhasil disimpan!');</script>";
 		echo "<script>location='index.php?halaman=produk';</script>";
 }
 
