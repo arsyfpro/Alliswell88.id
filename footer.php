@@ -18,10 +18,10 @@
         <div class="col-xs-14 col-sm-6 col-md-4">
           <h5>Quick links</h5>
           <ul class="list-unstyled quick-links">
-            <li><a href="search.php"></i>Search</a></li>
             <li><a href="allstuff.php"></i>Shop All</a></li>
             <li><a href="http://localhost/tubesIMK/edisi.php?item=1"></i>Masker</a></li>
             <li><a href="http://localhost/tubesIMK/edisi.php?item=2"></i>Scrunchie</a></li>
+            <li><a href="keranjang.php"></i>Cart</a></li>
             
           </ul>
         </div>
