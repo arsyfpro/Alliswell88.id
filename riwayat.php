@@ -41,7 +41,7 @@ else if (!isset($_SESSION['customer']) OR empty($_SESSION['customer'])) {
 
 	<br><br>
 
-	<h3>Riwayat Belanja Kamu</h3>
+	<h3>Riwayat Pesanan Saya</h3>
 
 	<br>
 	  <div class="card" style="width: 73rem; margin: 30px;">

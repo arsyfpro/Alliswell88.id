@@ -27,7 +27,7 @@
 			  <thead>
 			    <tr>
 			      <th colspan="2" style="text-align: center;">
-			      	Your Account <br><br> <a href="riwayat.php">Order History</a>
+			      	<h2> Your Account </h2><a href="riwayat.php">Order History</a>
 			  	  </th>
 			    </tr>
 			  </thead>
@@ -68,8 +68,8 @@
 			  </tbody>
 			</table>
 		</div>
-			<a style="width: 75px; margin-left: 30px" onclick="return confirm('Apakah Anda yakin ingin logout? Semua item dalam keranjang akan hilang.')" class="btn btn-outline-danger" href="logout.php">Logout</a> <br>
 	</div>
+			<a style="width: 75px; margin-left: 30px" onclick="return confirm('Apakah Anda yakin ingin logout? Semua item dalam keranjang akan hilang.')" class="btn btn-outline-danger" href="logout.php">Logout</a> <br>
 	</div>
 
 <?php include 'footer.php'; ?>

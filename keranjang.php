@@ -45,9 +45,9 @@
 <br><br>
 <?php if (empty($_SESSION['cart']) || !isset($_SESSION['cart'])) : ?>
 
-<div align="center" style="margin: 170px;">
-	<h3 align="center">Keranjang kamu saat ini kosong.</h3>
-	<h3>Ayo belanja <a href="allstuff.php">di sini</a>!</h3>
+<div align="center" style="margin: 75px">
+	<h3>Your Cart is Empty!</h3><br><br><br>
+<img src="icon/empty.gif" style="width: 200px;">
 </div>
 
 <?php else: ?>
