@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2020 at 03:38 PM
+-- Generation Time: Jan 03, 2021 at 09:42 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -197,7 +197,9 @@ CREATE TABLE `pembayaran` (
 --
 
 INSERT INTO `pembayaran` (`id_pembayaran`, `id_pesanan`, `nama_pembayar`, `metode_bayar`, `tanggal`, `bukti_pembayaran`) VALUES
-(1, 5, 'Fikri', 'OVO', '30-12-2020', '30122020150855_nopem_5_25122019192019_nopem_2_tes123_images.jpeg');
+(1, 5, 'Fikri', 'OVO', '30-12-2020', '30122020150855_nopem_5_25122019192019_nopem_2_tes123_images.jpeg'),
+(2, 1, 'Anita', 'DANA', '01-01-2021', '01012021124016_nopem_1_25122019192019_nopem_2_tes123_images.jpeg'),
+(3, 8, 'Melly', 'OVO', '01-01-2021', '01012021124314_nopem_8_72406.jpg');
 
 -- --------------------------------------------------------
 
@@ -222,11 +224,14 @@ CREATE TABLE `pesanan` (
 --
 
 INSERT INTO `pesanan` (`id_pesanan`, `id_akun`, `tanggal_pesan`, `subtotal_produk`, `alamat_kirim`, `opsi_pengiriman`, `subtotal_pengiriman`, `status_pesanan`, `resi_pengiriman`) VALUES
-(1, 2, '30-12-2020', 48000, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota , 20127', '', 0, 'Menunggu Pembayaran', ''),
+(1, 2, '30-12-2020', 48000, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota , 20127', '', 0, 'Pembayaran Berhasil', ''),
 (2, 2, '30-12-2020', 20000, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota , 20127', '', 0, 'Menunggu Pembayaran', ''),
 (3, 2, '30-12-2020', 0, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota , 20127', '', 0, 'Menunggu Pembayaran', ''),
 (4, 2, '30-12-2020', 16000, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota Medan, Sumatera Utara, 20127', 'Jalur Nugraha Ekakurir (JNE), REG', 10000, 'Menunggu Pembayaran', ''),
-(5, 2, '30-12-2020', 20000, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota Medan, Sumatera Utara, 20127', 'Citra Van Titipan Kilat (TIKI), REG', 7000, 'Menunggu Pembayaran', 'JP123789456');
+(5, 2, '30-12-2020', 20000, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota Medan, Sumatera Utara, 20127', 'Citra Van Titipan Kilat (TIKI), REG', 7000, 'Pembayaran Berhasil', ''),
+(6, 2, '01-01-2021', 8000, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota Padang Sidempuan, Sumatera Utara, 20127', 'POS Indonesia (POS), Express Next Day Barang', 20000, 'Menunggu Pembayaran', ''),
+(7, 2, '01-01-2021', 8000, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota Padang Sidempuan, Sumatera Utara, 20127', 'Citra Van Titipan Kilat (TIKI), REG', 10000, 'Menunggu Pembayaran', ''),
+(8, 2, '01-01-2021', 36000, 'Jl. Medan-Binjai km. 13,5, Medan Sunggal, Sumatera Utara, Kota Padang Sidempuan, Sumatera Utara, 20127', 'Citra Van Titipan Kilat (TIKI), REG', 10000, 'Pembayaran Berhasil', 'JP1231234124');
 
 -- --------------------------------------------------------
 
@@ -252,7 +257,11 @@ INSERT INTO `pesanan_produk` (`id_pesanan`, `id_produk`, `jumlah_pesanan`) VALUE
 (4, 16, 1),
 (4, 7, 1),
 (5, 7, 1),
-(5, 12, 1);
+(5, 12, 1),
+(6, 16, 1),
+(7, 16, 1),
+(8, 13, 1),
+(8, 14, 2);
 
 -- --------------------------------------------------------
 
@@ -276,8 +285,8 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `id_jenis`, `id_warna`, `nama_produk`, `harga_produk`, `foto_produk`, `deskripsi_produk`, `stok_produk`) VALUES
-(1, 1, 15, 'Masker Kain Katun Linen 2 ply - Brown Sugar', 7500, 'linen-mask-brown-sugar.png', 'Fabric : Katun Linen + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 32),
-(2, 1, 17, 'Masker Kain Katun Linen 2 ply - Ash Grey', 7500, 'linen-mask-ash-grey.png', 'Fabric : Katun Linen + Katun Import Jepang <br>\r\nSize : 17 x 13 cm <br>\r\nReady Stock no Pre-Order <br>\r\n- <br>\r\n> Earloop<br>\r\n> Tidak ada lubang tisu<br>\r\n> Karet dapat disesuaikan sendiri (free stopper)<br>\r\n> Tersedia juga dalam model dewasa earloop dan headloop<br>\r\n> Pilihan Motif lain silahkan check di etalase<br>\r\n> Dipacking 1 plastik ziplock/item<br>\r\n-<br>\r\nMOHON DIPERHATIKAN :<br>\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 32),
+(1, 1, 15, 'Masker Kain Katun Linen 2 ply - Brown Sugar', 7500, 'Brown Sugar (2).png', '<p>Fabric : Katun Linen + Katun Import Jepang<br />\r\nSize : 17 x 13 cm<br />\r\nReady Stock no Pre-Order</p>\r\n\r\n<p>-<br />\r\n&gt; Earloop<br />\r\n&gt; Tidak ada lubang tisu<br />\r\n&gt; Karet dapat disesuaikan sendiri (free stopper)<br />\r\n&gt; Pilihan Motif lain silahkan check di etalase<br />\r\n&gt; Dipacking 1 plastik ziplock/item</p>\r\n\r\n<p>-<br />\r\nMOHON DIPERHATIKAN : Produk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.</p>\r\n', 32),
+(2, 1, 17, 'Masker Kain Katun Linen 2 ply - Ash Grey', 7500, 'Ash Grey (2).png', '<p>Fabric : Katun Linen + Katun Import Jepang<br />\r\nSize : 17 x 13 cm<br />\r\nReady Stock no Pre-Order<br />\r\n-<br />\r\n&gt; Earloop<br />\r\n&gt; Tidak ada lubang tisu<br />\r\n&gt; Karet dapat disesuaikan sendiri (free stopper)<br />\r\n&gt; Tersedia juga dalam model dewasa earloop dan headloop<br />\r\n&gt; Pilihan Motif lain silahkan check di etalase<br />\r\n&gt; Dipacking 1 plastik ziplock/item<br />\r\n-<br />\r\nMOHON DIPERHATIKAN :<br />\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.</p>\r\n', 32),
 (3, 1, 16, 'Masker Kain Katun Linen 2 ply - Dark Tosca', 7500, 'linen-mask-dark-tosca.png', 'Fabric : Katun Linen + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 32),
 (4, 1, 21, 'Masker Kain Satin 2 ply - Lilac', 12000, 'satin-mask-lilac-2.png', 'Fabric : Satin + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 23),
 (5, 1, 33, 'Masker Kain Satin Emboss 2 ply - Gold', 12000, 'emboss-mask-gold.png', 'Fabric : Satin Emboss Glitter + Katun Import Jepang\r\nSize : 17 x 13 cm\r\nReady Stock no Pre-Order\r\n-\r\n> Earloop\r\n> Tidak ada lubang tisu\r\n> Karet dapat disesuaikan sendiri (free stopper)\r\n> Tersedia juga dalam model dewasa earloop dan headloop\r\n> Pilihan Motif lain silahkan check di etalase\r\n> Dipacking 1 plastik ziplock/item\r\n-\r\nMOHON DIPERHATIKAN :\r\nProduk ini merupakan mass produk sehingga kemungkinan terdapat perbedaan 1-2cm dari size yang tertera.', 21),
@@ -287,10 +296,11 @@ INSERT INTO `produk` (`id_produk`, `id_jenis`, `id_warna`, `nama_produk`, `harga
 (10, 1, 26, 'Masker Kain Katun 2 ply - Dusty Rose', 12000, 'cotton-mask-dusty-rose.png', 'Fabric : Cotton Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 8),
 (11, 1, 36, 'Masker Kain Tie Dye 2 ply - Coffee Beige', 12000, 'tie-dye-mask-coffee-beige.png', 'Fabric : Tie Dye Rayon Janger + Katun Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 8),
 (12, 1, 48, 'Masker Kain Batik 2 ply - Red', 12000, 'batik-mask-Red-Bata.png', 'Fabric : Batik Sandwos + Katun Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 13),
-(13, 1, 50, 'Masker Kain Christmas 2 ply - Red Ginger', 12000, 'christmas-mask-red-ginger.png', 'Fabric : Katun Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 12),
-(14, 1, 59, 'Masker Kain Silky 2 ply - Maroon', 12000, 'silky-mask-maroon.png', 'Fabric : Satin Jaguar + Katun Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 32),
+(13, 1, 50, 'Masker Kain Christmas 2 ply - Red Ginger', 12000, 'christmas-mask-red-ginger.png', 'Fabric : Katun Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 11),
+(14, 1, 59, 'Masker Kain Silky 2 ply - Maroon', 12000, 'silky-mask-maroon.png', 'Fabric : Satin Jaguar + Katun Import Jepang\r\nReady Stock no Pre-Order\r\n\r\nEarloop\r\nTidak ada lubang tisu\r\nKaret dapat disesuaikan sendiri (free stopper)\r\nTersedia juga dalam model dewasa earloop dan headloop\r\nPilihan Motif lain silahkan check di etalase\r\nDi packing 1 plastik ziplock/item', 30),
 (15, 3, 55, 'Ikat Rambut Scrunchie Crepe Zipper - Maroon', 12000, 'crepe-scrunchie-maroon.png', 'Fabric : Diamond Crepe\r\nSize : approx 12 cm\r\nHarga tertera adalah harga satuan\r\nDipacking satuan dengan plastik ziplock\r\n\r\nNyaman dipakai, ringan, jahitan rapi dan karet kuat (Less Hair Friction & Breakage).', 4),
-(16, 2, 55, 'Ikat Rambut Scrunchie Crepe - Maroon', 8000, 'crepe-scrunchie-maroon.png', 'Fabric : Diamond Crepe\r\nSize : approx 12 cm\r\nHarga tertera adalah harga satuan\r\nDipacking satuan dengan plastik ziplock\r\n\r\nNyaman dipakai, ringan, jahitan rapi dan karet kuat (Less Hair Friction & Breakage).', 2);
+(16, 2, 55, 'Ikat Rambut Scrunchie Crepe - Maroon', 8000, 'crepe-scrunchie-maroon.png', 'Fabric : Diamond Crepe\r\nSize : approx 12 cm\r\nHarga tertera adalah harga satuan\r\nDipacking satuan dengan plastik ziplock\r\n\r\nNyaman dipakai, ringan, jahitan rapi dan karet kuat (Less Hair Friction & Breakage).', 0),
+(17, 1, 51, 'Masker Kain Christmas 2 ply - Red Snowball', 12000, 'Red Snow Ball.png', '<p>Fabric : Katun Import Jepang<br />\r\nReady Stock no Pre-Order</p>\r\n\r\n<p>-<br />\r\n&gt; Earloop<br />\r\n&gt; Tidak ada lubang tisu<br />\r\n&gt; Karet dapat disesuaikan sendiri (free stopper)<br />\r\n&gt; Tersedia juga dalam model dewasa earloop dan headloop<br />\r\n&gt; Pilihan Motif lain silahkan check di etalase<br />\r\n&gt; Dipacking 1 plastik ziplock/item</p>\r\n', 14);
 
 --
 -- Indexes for dumped tables
@@ -355,7 +365,7 @@ ALTER TABLE `akun`
 -- AUTO_INCREMENT for table `kategori_produk_edisi`
 --
 ALTER TABLE `kategori_produk_edisi`
-  MODIFY `id_edisi` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_edisi` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `kategori_produk_jenis`
@@ -367,25 +377,25 @@ ALTER TABLE `kategori_produk_jenis`
 -- AUTO_INCREMENT for table `kategori_warna_produk`
 --
 ALTER TABLE `kategori_warna_produk`
-  MODIFY `id_warna` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id_warna` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pembayaran` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id_pesanan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pesanan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_produk` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
