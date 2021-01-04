@@ -86,7 +86,7 @@ session_start();
       $take = $koneksi->query("SELECT p.id_produk, p.id_warna, p.nama_produk, p.harga_produk, p.foto_produk, p.stok_produk 
                                       FROM produk p JOIN kategori_warna_produk w 
                                       WHERE p.stok_produk > 0 AND (p.id_jenis = '2' OR p.id_jenis = '3') AND w.id_edisi = '$edisi' AND p.id_warna = w.id_warna 
-                                      ORDER BY p.nama_produk");
+                                      GROUP BY p.id_warna ORDER BY p.nama_produk");
 
       $banyakdata = $take->num_rows;
     }
@@ -182,6 +182,7 @@ session_start();
 </div> 
 <!--container.//-->
 <br><br>
+
 <?php include 'footer.php'; ?>
 
 </body>
