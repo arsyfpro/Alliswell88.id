@@ -11,7 +11,7 @@
           <<img src="icon/logoputih.png" height="30">
           <br><br>
             <p style="color:white;">Adalah sebuah online shop yang bergerak dibidang produksi
-            masker dan srunchie sejak tahun 2018. Kualitas adalah prioritas kami dengan harga yang terjangkau.</p>
+            masker dan srunchie sejak tahun 2020. Kualitas adalah prioritas kami dengan harga yang terjangkau.</p>
           
           </ul>
         </div>
