@@ -70,7 +70,7 @@ if ($databayar['status_pesanan'] != "Pembayaran Invalid" && $databayar['status_p
             <label>Metode Pembayaran</label>
             <select class="form-control" name="metode" required>
               <option value="">--Pilih Metode--</option>
-              <option value="Bank BRI">Transfer Bank BNI</option>
+              <option value="Bank BNI">Transfer Bank BNI</option>
               <option value="OVO">OVO</option>
               <option value="DANA">DANA</option>
             </select>
