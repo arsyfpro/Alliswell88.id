@@ -107,7 +107,7 @@
 		<div style="width: 73rem; margin: 30px;">
 
 				<?php if ($datauser['status_pesanan'] == "Pembayaran Berhasil") : ?>
-			<div class="alert alert-success">
+			<div class="alert alert-success" style="width: 73rem; margin-left: 45px">
 					<p>Pembayaran berhasil, berikut adalah nomor resi pengiriman Anda. Jika belum ada, harap tunggu maksimal 2 &times; 24 jam atau hubungi contact kami.</p>
 				  <strong>
 					<p>No. Resi: <?= $datauser['resi_pengiriman'] ?></p>
@@ -122,14 +122,14 @@
 			</div>
 
 				<?php elseif ($datauser['status_pesanan'] == "Dibatalkan") : ?>
-			<div class="alert alert-danger">
+			<div class="alert alert-danger" style="width: 73rem; margin-left: 45px">
 				<strong>
 					<p>Pesanan dibatalkan. Harap hubungi contact kami untuk informasi lebih lanjut!</p>
 				  </strong>
 			</div>
 
 				<?php elseif ($datauser['status_pesanan'] == "Pembayaran Invalid") : ?>
-			<div class="alert alert-warning">
+			<div class="alert alert-warning" style="width: 73rem; margin-left: 45px">
 				<p>Pembayaran invalid. Silakan melakukan pembayaran kembali sebesar Rp <?= number_format($subtotalproduk + $datauser['subtotal_pengiriman']) ?>,- ke:</p>
 					<table style="font-weight: bold;">
 					  <strong>
@@ -148,7 +148,7 @@
 					<br>
 				<p>Atau hubungi contact kami untuk informasi lebih lanjut.</p>
 			</div>
-			<h6>Sudah melakukan pembayaran kembali? Upload bukti pembayaran <a href="pembayaran.php?id=<?= $_GET['id'] ?>&tagihan=<?= $alltagihan ?>">di sini</a>!</h6>
+			<h6 style="width: 73rem; margin-left: 45px">Sudah melakukan pembayaran kembali? Upload bukti pembayaran <a href="pembayaran.php?id=<?= $_GET['id'] ?>&tagihan=<?= $alltagihan ?>">di sini</a>!</h6>
 
 				<?php else : ?>
 			<div class="alert alert-info" style="width: 73rem; margin-left: 45px">
